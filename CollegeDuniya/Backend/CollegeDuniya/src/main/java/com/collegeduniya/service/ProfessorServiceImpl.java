@@ -61,5 +61,18 @@ public class ProfessorServiceImpl implements ProfessorService {
 		}
 		return professorDtoList;
 	}
+	
+	@Override
+	public List<ProfessorDto> getAllProfessors() {
+		List<Professor> professorList = professorRepo.findAll();
+		List<ProfessorDto> professorDtoList = new ArrayList<ProfessorDto>();
+		for (Professor professor : professorList) {
+			ProfessorDto professorDto = mapper.map(professor,ProfessorDto.class);
+//			studentDto.setAddressPincode(student.getAddress().getPincode());
+			professorDto.setDepartmentName(professor.getDepartment().getDepartmentName());
+			professorDtoList.add(professorDto);
+		}
+		return professorDtoList;
 
+	}
 }
