@@ -65,5 +65,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 		departmentRepo.delete(department);
 		return department.getDepartmentName()+" deleted";
 	}
+	
+	@Override
+	public String updateDepartmentDetails(DepartmentDto departmentDto, Long id) {
+		Department department = departmentRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));	
+		mapper.map(departmentDto, department);
+	
+		return department.getDepartmentName()+" successfully updated";
+	}
 
 }
