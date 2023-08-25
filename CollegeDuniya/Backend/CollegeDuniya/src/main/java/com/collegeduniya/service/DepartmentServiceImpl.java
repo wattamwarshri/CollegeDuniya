@@ -58,5 +58,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentList.stream().map(department -> mapper.map(department, DepartmentDto.class)).collect(Collectors.toList());
 	}
 	
+	@Override
+	public String deleteDepartment(Long id) {
+		Department department = departmentRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));
+		departmentRepo.delete(department);
+		return department.getDepartmentName()+" deleted";
+	}
 
 }
