@@ -11,5 +11,5 @@ public interface ProfessorService {
 	List<ProfessorDto> getAllProfessorByDepartmentName(String deptName);
 	List<ProfessorDto> getAllProfessors();
 	String updateProfessorDetails(ProfessorDto professorDto,Long id);
-
+	String deleteProfessorById(Long id);
 }

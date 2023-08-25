@@ -83,4 +83,15 @@ public class ProfessorServiceImpl implements ProfessorService {
 	
 		return professor.getFirstName()+" "+professor.getLastName()+" successfully updated";
 	}
+	
+	@Override
+	public String deleteProfessorById(Long id) {
+		Professor professor = professorRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));
+		List<Professor> professorList = professorRepo.findAll();
+		professorList.remove(professor);
+		professorRepo.delete(professor);
+		professorRepo.saveAll(professorList);
+		return professor.getFirstName()+" "+professor.getLastName()+" was removed";
+	}
 }
