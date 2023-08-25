@@ -1,5 +1,8 @@
 package com.collegeduniya.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -43,6 +46,20 @@ public class ProfessorServiceImpl implements ProfessorService {
 		ProfessorDto professorDto = mapper.map(professor, ProfessorDto.class);
 		professorDto.setDepartmentName(professor.getDepartment().getDepartmentName());
 		return professorDto;
+	}
+	
+	@Override
+	public List<ProfessorDto> getAllProfessorByDepartmentName(String deptName) {
+		List<Professor> professorList = professorRepo.findAllByDepartmentDepartmentName(deptName)
+				.orElseThrow(() -> new ResourceNotFoundException("No course found in Department " + deptName));
+//		List<CourseDto> courseDtoList = courses.stream().map(course -> this.mapper.map(courses, CourseDto.class)).collect(Collectors.toList());
+		List<ProfessorDto> professorDtoList= new ArrayList<ProfessorDto>();
+		for (Professor professor : professorList) {
+			ProfessorDto professorDto = mapper.map(professor,ProfessorDto.class);
+			professorDto.setDepartmentName(deptName);
+			professorDtoList.add(professorDto);
+		}
+		return professorDtoList;
 	}
 
 }

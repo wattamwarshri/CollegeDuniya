@@ -43,4 +43,15 @@ public class ProfessorController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
 			}
 	}
+	
+	@GetMapping("/professorsBydepartmentName/{departmentName}")
+	public ResponseEntity<?> getAllProfessorsByDepartmentName(@PathVariable String departmentName) {
+		try {
+			System.out.println("in get professors by department: "+departmentName);
+			return new ResponseEntity<>(professorService.getAllProfessorByDepartmentName(departmentName), HttpStatus.OK);
+			} 
+		catch (RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+			}
+	}
 }
