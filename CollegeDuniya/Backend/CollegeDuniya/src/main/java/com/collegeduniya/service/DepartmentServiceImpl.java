@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.collegeduniya.custom_exceptions.ResourceNotFoundException;
 import com.collegeduniya.dto.DepartmentDto;
 import com.collegeduniya.entities.Department;
 import com.collegeduniya.repository.CourseRepository;
@@ -38,6 +39,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 		Department department = mapper.map(departmentDto, Department.class);
 		departmentRepo.save(department);
 		return null;
+	}
+	
+	@Override
+	public DepartmentDto getDepartmentById(Long id) {
+		Department department = departmentRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));
+		DepartmentDto dept = mapper.map(department, DepartmentDto.class);
+		return dept;
 	}
 
 }
