@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.collegeduniya.custom_exceptions.ResourceNotFoundException;
 import com.collegeduniya.dto.DepartmentDto;
+import com.collegeduniya.entities.Course;
 import com.collegeduniya.entities.Department;
 import com.collegeduniya.repository.CourseRepository;
 import com.collegeduniya.repository.DepartmentRepository;
@@ -73,6 +74,15 @@ public class DepartmentServiceImpl implements DepartmentService {
 		mapper.map(departmentDto, department);
 	
 		return department.getDepartmentName()+" successfully updated";
+	}
+	
+	@Override
+	public String cancelCourseFromDepartment(Long deptId, Long courseId) {
+		
+		Department department = departmentRepo.findById(deptId).orElseThrow(() -> new ResourceNotFoundException("Invalid department ID!!!!!"));
+		Course course = courseRepo.findById(courseId).orElseThrow(() -> new ResourceNotFoundException("Invalid  course ID!!!!!"));
+		department.removeCourse(course);
+		return "Deleted course : " + course.getCourseName();
 	}
 
 }
