@@ -85,4 +85,13 @@ public class DepartmentController {
 			return new ResponseEntity<>(new ApiResponse(e.getMessage()),HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@DeleteMapping("/{deptId}/deleteProfessor/{professorId}")
+	public ResponseEntity<?> deleteProfessorFromDepartment(@PathVariable Long deptId,@PathVariable Long professorId){
+		try {
+			return new ResponseEntity<>(departmentService.cancelProfessorFromDepartment(deptId,professorId),HttpStatus.OK);
+		}catch(RuntimeException e){
+			return new ResponseEntity<>(new ApiResponse(e.getMessage()),HttpStatus.NOT_FOUND);
+		}
+	}
 }

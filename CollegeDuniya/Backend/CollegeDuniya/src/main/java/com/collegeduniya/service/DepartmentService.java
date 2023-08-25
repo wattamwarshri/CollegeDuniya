@@ -11,4 +11,5 @@ public interface DepartmentService {
 	String deleteDepartment(Long id);
 	String updateDepartmentDetails(DepartmentDto departmentDto,Long id);
 	String cancelCourseFromDepartment(Long deptId, Long courseId);
+	String cancelProfessorFromDepartment(Long deptId, Long professorId);
 }

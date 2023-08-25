@@ -13,6 +13,7 @@ import com.collegeduniya.custom_exceptions.ResourceNotFoundException;
 import com.collegeduniya.dto.DepartmentDto;
 import com.collegeduniya.entities.Course;
 import com.collegeduniya.entities.Department;
+import com.collegeduniya.entities.Professor;
 import com.collegeduniya.repository.CourseRepository;
 import com.collegeduniya.repository.DepartmentRepository;
 import com.collegeduniya.repository.ExamRepository;
@@ -85,4 +86,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return "Deleted course : " + course.getCourseName();
 	}
 
+	@Override
+	public String cancelProfessorFromDepartment(Long deptId, Long professorId) {
+		Department department = departmentRepo.findById(deptId).orElseThrow(() -> new ResourceNotFoundException("Invalid Department ID!!!!!"));
+		Professor professor = professorRepo.findById(professorId).orElseThrow(() -> new ResourceNotFoundException("Invalid Professor ID!!!!!"));
+		department.removeProfessor(professor);
+		return "Deleted professor : " + professor.getFirstName()+" "+professor.getLastName();
+	}
 }
