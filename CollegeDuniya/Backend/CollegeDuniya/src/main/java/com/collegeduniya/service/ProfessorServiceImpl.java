@@ -35,5 +35,14 @@ public class ProfessorServiceImpl implements ProfessorService {
 		department.addProfessor(persistentProfessor);
 		return "Professor: "+persistentProfessor.getFirstName()+" "+persistentProfessor.getLastName()+ " added successfully";
 	}
+	
+	@Override
+	public ProfessorDto getProfessorById(Long id) {
+		Professor professor = professorRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));
+		ProfessorDto professorDto = mapper.map(professor, ProfessorDto.class);
+		professorDto.setDepartmentName(professor.getDepartment().getDepartmentName());
+		return professorDto;
+	}
 
 }

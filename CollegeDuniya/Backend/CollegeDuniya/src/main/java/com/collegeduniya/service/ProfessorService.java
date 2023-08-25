@@ -5,4 +5,5 @@ import com.collegeduniya.dto.ProfessorDto;
 public interface ProfessorService {
 	
 	String addProfessor(ProfessorDto professorDto);
+	ProfessorDto getProfessorById(Long id);
 }
