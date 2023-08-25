@@ -1,5 +1,8 @@
 package com.collegeduniya.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -48,5 +51,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 		DepartmentDto dept = mapper.map(department, DepartmentDto.class);
 		return dept;
 	}
+	
+	@Override
+	public List<DepartmentDto> getAllDepartments() {
+		List<Department> departmentList = departmentRepo.findAll();
+		return departmentList.stream().map(department -> mapper.map(department, DepartmentDto.class)).collect(Collectors.toList());
+	}
+	
 
 }

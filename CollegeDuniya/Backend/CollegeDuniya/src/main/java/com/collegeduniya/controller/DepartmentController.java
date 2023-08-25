@@ -42,5 +42,16 @@ public class DepartmentController {
 		}
 	}
 	
+	@GetMapping("/ListOfDepartments")
+	public ResponseEntity<?> getAllAvailableDepartments() {
+		try {
+			System.out.println("in get all available Departments ");
+			return new ResponseEntity<>(departmentService.getAllDepartments(), HttpStatus.OK);
+		} catch (RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+
+	}
+	
 	
 }

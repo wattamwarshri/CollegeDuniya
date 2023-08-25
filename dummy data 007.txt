@@ -1,0 +1,108 @@
+//////////////////////
+//Step 1
+
+INSERT INTO department (department_name, phone_no) VALUES
+('Department 1', '1234567890'),
+('Department 2', '2345678901'),
+('Department 3', '3456789012'),
+('Department 4', '4567890123'),
+('Department 5', '5678901234'),
+('Department 6', '6789012345'),
+('Department 7', '7890123456'),
+('Department 8', '8901234567'),
+('Department 9', '9012345678'),
+('Department 10', '0123456789');
+
+--------------------------------------------------------------------------
+step2
+
+INSERT INTO course (course_name, description, department_id) VALUES
+('Course 1', 'Description 1', 1),
+('Course 2', 'Description 2', 2),
+('Course 3', 'Description 3', 1),
+('Course 4', 'Description 4', 3),
+('Course 5', 'Description 5', 2),
+('Course 6', 'Description 6', 3),
+('Course 7', 'Description 7', 1),
+('Course 8', 'Description 8', 2),
+('Course 9', 'Description 9', 3),
+('Course 10', 'Description 10', 1);
+
+--------------------------------------------------------------------------
+
+step 3
+
+INSERT INTO exam (exam_date, exam_type, exam_venue, department_id) VALUES
+('2023-09-01', 'Type 1', 'Venue 1', 1),
+('2023-09-02', 'Type 2', 'Venue 2', 2),
+('2023-09-03', 'Type 1', 'Venue 3', 1),
+('2023-09-04', 'Type 2', 'Venue 4', 3),
+('2023-09-05', 'Type 1', 'Venue 5', 2),
+('2023-09-06', 'Type 2', 'Venue 6', 3),
+('2023-09-07', 'Type 1', 'Venue 7', 1),
+('2023-09-08', 'Type 2', 'Venue 8', 2),
+('2023-09-09', 'Type 1', 'Venue 9', 3),
+('2023-09-10', 'Type 2', 'Venue 10', 1);
+
+-----------------------------------------------------------------------------
+
+step 4
+
+INSERT INTO professor (email, first_name, gender, last_name, password, department_id) VALUES
+('professor1@example.com', 'John', 'MALE', 'Doe', 'password1', 1),
+('professor2@example.com', 'Jane', 'FEMALE', 'Smith', 'password2', 2),
+('professor3@example.com', 'Bob', 'MALE', 'Johnson', 'password3', 1),
+('professor4@example.com', 'Alice', 'FEMALE', 'Williams', 'password4', 3),
+('professor5@example.com', 'David', 'MALE', 'Brown', 'password5', 2),
+('professor6@example.com', 'Sarah', 'FEMALE', 'Davis', 'password6', 3),
+('professor7@example.com', 'Tom', 'MALE', 'Garcia', 'password7', 1),
+('professor8@example.com', 'Emily', 'FEMALE', 'Martinez', 'password8', 2),
+('professor9@example.com', 'Mike', 'MALE', 'Anderson', 'password9', 3),
+('professor10@example.com', 'Lisa', 'FEMALE', 'Taylor', 'password10', 1);
+
+-------------------------------------------------------------------------------
+
+STEP 5
+
+INSERT INTO subject (subject_description, subject_name, professor_id) VALUES
+('Description 1', 'Subject 1', 1),
+('Description 2', 'Subject 2', 2),
+('Description 3', 'Subject 3', 1),
+('Description 4', 'Subject 4', 3),
+('Description 5', 'Subject 5', 2),
+('Description 6', 'Subject 6', 3),
+('Description 7', 'Subject 7', 1),
+('Description 8', 'Subject 8', 2),
+('Description 9', 'Subject 9', 3),
+('Description 10', 'Subject 10', 1);
+
+----------------------------------------------------------------------------------------------------
+
+step 6
+
+INSERT INTO student (dob, email, first_name, gender, last_name, password, course_id, professor_id) VALUES
+('2000-01-01', 'student1@example.com', 'John', 'MALE', 'Doe', 'password1', 1, 1),
+('2000-02-02', 'student2@example.com', 'Jane', 'FEMALE', 'Smith', 'password2', 2, 2),
+('2000-03-03', 'student3@example.com', 'Bob', 'MALE', 'Johnson', 'password3', 1, 1),
+('2000-04-04', 'student4@example.com', 'Alice', 'FEMALE', 'Williams', 'password4', 3, 3),
+('2000-05-05', 'student5@example.com', 'David', 'MALE', 'Brown', 'password5', 2, 2),
+('2000-06-06', 'student6@example.com', 'Sarah', 'FEMALE', 'Davis', 'password6', 3, 3),
+('2000-07-07', 'student7@example.com', 'Tom', 'MALE', 'Garcia', 'password7', 1, 1),
+('2000-08-08', 'student8@example.com', 'Emily', 'FEMALE', 'Martinez', 'password8', 2, 2),
+('2000-09-09', 'student9@example.com', 'Mike', 'MALE', 'Anderson', 'password9', 3, 3),
+('2000-10-10', 'student10@example.com', 'Lisa', 'FEMALE', 'Taylor', 'password10', 1, 1);
+
+----------------------------------------------------------------------------------------------------------------------
+step 7(change PK from pincode to addressLine1 )
+
+INSERT INTO address (pincode, adr_line1, adr_line2, city, country, state, professor_professor_id, student_student_id) VALUES
+('12345', '123 Main St', 'Apt 1', 'Anytown', 'USA', 'CA', 1, 1),
+('67890', '456 Elm St', 'Apt 2', 'Otherville', 'USA', 'NY', 2, 2),
+('23456', '789 Oak St', 'Apt 3', 'Smalltown', 'USA', 'TX', 3, 3),
+('78901', '321 Maple St', 'Apt 4', 'Bigcity', 'USA', 'IL', 4, 4),
+('34567', '654 Pine St', 'Apt 5', 'Hometown', 'USA', 'FL', 5, 5),
+('89012', '987 Cedar St', 'Apt 6', 'Nowhere', 'USA', 'WA', 6, 6),
+('45678', '654 Birch St', 'Apt 7', 'Everytown', 'USA', 'OH', 7, 7),
+('90123', '321 Walnut St', 'Apt 8', 'Somewhere', 'USA', 'PA', 8, 8),
+('23457', '789 Spruce St', 'Apt 9', 'Anyplace', 'USA', 'AZ', 9, 9),
+('78902', '123 Cherry St', 'Apt 10', 'Noway', 'USA', 'NC', 10, 10);
