@@ -10,4 +10,6 @@ public interface ProfessorService {
 	ProfessorDto getProfessorById(Long id);
 	List<ProfessorDto> getAllProfessorByDepartmentName(String deptName);
 	List<ProfessorDto> getAllProfessors();
+	String updateProfessorDetails(ProfessorDto professorDto,Long id);
+
 }

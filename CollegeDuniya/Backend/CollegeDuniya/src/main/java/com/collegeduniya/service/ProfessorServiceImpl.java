@@ -73,6 +73,14 @@ public class ProfessorServiceImpl implements ProfessorService {
 			professorDtoList.add(professorDto);
 		}
 		return professorDtoList;
-
+	}
+	
+	@Override
+	public String updateProfessorDetails(ProfessorDto professorDto, Long id) {
+		Professor professor = professorRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));	
+		mapper.map(professorDto, professor);
+	
+		return professor.getFirstName()+" "+professor.getLastName()+" successfully updated";
 	}
 }
