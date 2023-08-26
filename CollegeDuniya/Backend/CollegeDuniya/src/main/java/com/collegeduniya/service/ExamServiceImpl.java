@@ -39,4 +39,18 @@ public class ExamServiceImpl implements ExamService{
 	    dept.addExam(newExam);
 		return newExam.getExamName()+" exam added successfully";
 	}
+	
+	@Override
+	public String updateExamDetails(ExamDto examDto, Long examId) {
+		// TODO Auto-generated method stub
+		Exam exam = examRepo.findById(examId).orElseThrow(() -> new ResourceNotFoundException("Invalid Id"));
+		Department dept = this.deptRepo.findByDepartmentName(examDto.getDepartmentName()).orElseThrow(() -> new ResourceNotFoundException("department name was not found"));
+		exam.setDepartment(dept);
+		this.examRepo.save(exam);
+		modelMapper.map(examDto, exam);
+		
+		
+ 		return exam.getExamName() +" successfully Updated";
+
+	}
 }
