@@ -65,5 +65,17 @@ public class CourseServiceImpl implements CourseService{
 		}
 		return courseDtoList;
 	}
+	
+	@Override
+	public List<CourseDto> getAllCourses() {
+		List<Course> courseList = courseRepo.findAll();
+		List<CourseDto> courseDtoList= new ArrayList<CourseDto>();
+		for (Course course : courseList) {
+			CourseDto courseDto = mapper.map(course,CourseDto.class);
+			courseDto.setDepartmentName(course.getDepartment().getDepartmentName());
+			courseDtoList.add(courseDto);
+		}
+		return courseDtoList;
+	}
 
 }

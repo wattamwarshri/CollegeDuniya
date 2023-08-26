@@ -10,4 +10,5 @@ public interface CourseService {
 	String addCourse(CourseDto courseDto);
 	CourseDto getCourseById(Long id);
 	List<CourseDto> getAllCoursesByDepartmentName(String deptName);
+	List<CourseDto> getAllCourses();
 }

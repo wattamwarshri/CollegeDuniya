@@ -57,4 +57,16 @@ public class CourseController {
 		}
 
 	}
+	
+
+	@GetMapping("/ListOfCourses")
+	public ResponseEntity<?> getAllAvailableCourses() {
+		try {
+			System.out.println("in get all available courses: ");
+			return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
+		} catch (RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+
+	}
 }
