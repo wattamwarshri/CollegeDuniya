@@ -8,6 +8,7 @@ import AddOrUpdateDepartmentComponent from './component/department/AddOrUpdateDe
 import ListProfessorComponent from './component/professor/ListProfessorComponent';
 import AddOrUpdateProfessorComponent from './component/professor/AddOrUpdateProfessorComponent';
 import ListCourseComponent from './component/course/ListCourseComponent';
+import AddOrUpdateCourseComponent from './component/course/AddOrUpdateCourseComponent';
 
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
 
         {/* Course Routing */}
         <Route path="/courses" element={<ListCourseComponent />} />        
+        <Route path="/add-course" element={<AddOrUpdateCourseComponent/>} />
+        <Route path ="edit-course/:id" element={<AddOrUpdateCourseComponent />} />
+
 
           </Routes>
         </div>

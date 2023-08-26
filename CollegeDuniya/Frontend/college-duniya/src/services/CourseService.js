@@ -9,6 +9,22 @@ class CourseService
         return axios.get(COURSE_API_BASE_URL + "/ListOfCourses");
     }
 
+    addCourse(course)
+    {
+        return axios.post(COURSE_API_BASE_URL,course)
+    }
+
+    getCourseById(courseId)
+    {
+        return axios.get(COURSE_API_BASE_URL+ "/singleCourse/"+courseId)
+    }
+
+    updateCourse(courseId,course)
+    {
+        return axios.put(COURSE_API_BASE_URL+ "/updateCourse/"+courseId,course);
+    }
+
+
 
 }
 
