@@ -28,7 +28,7 @@ const ListDepartmentComponent = () => {
     <div>
       {/* JSX Code */}
       <h1 className="text-center">Department List </h1>
-      <Link to="/add-student">
+      <Link to="/add-department">
         <div className="row">
           <button className="btn btn-primary">Add Department</button>
         </div>{" "}
@@ -54,8 +54,8 @@ const ListDepartmentComponent = () => {
                 <td>{department.phoneNo}</td>
                 <center>
                   <td>
-                     <Link className="btn btn-info btn-block mb-4" >Edit</Link> 
-                     {/* to={`/edit-student/${student.id}`} */}
+                     <Link className="btn btn-info btn-block mb-4" to={`/edit-department/${department.departmentId}`}>Edit</Link> 
+                    
 
                      <button className="btn btn-danger btn-block mb-4" >Delete</button> 
                      {/* onClick={()=>deleteStudent(student.id)} style={{marginLeft : "10px"}} */}
