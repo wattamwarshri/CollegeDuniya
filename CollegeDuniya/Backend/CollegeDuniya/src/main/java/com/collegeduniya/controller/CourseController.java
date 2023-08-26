@@ -1,7 +1,6 @@
 package com.collegeduniya.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,9 +18,9 @@ import com.collegeduniya.dto.CourseDto;
 import com.collegeduniya.service.CourseService;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("/api/v1/courses")
 public class CourseController {
 	
 	@Autowired
@@ -93,5 +92,15 @@ public class CourseController {
 		}
 	}
 	
+	@DeleteMapping("/deleteSingleCourse/{id}")
+	public ResponseEntity<?> deleteCourseById(@PathVariable Long id){
+		try {
+			System.out.println("in delete Course by id ");
+			return new ResponseEntity<>(courseService.deleteCourseById(id), HttpStatus.OK);
+		}
+		catch (RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
 	
 }

@@ -6,7 +6,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ListDepartmentComponent from './component/department/ListDepartmentComponent';
 import AddOrUpdateDepartmentComponent from './component/department/AddOrUpdateDepartmentComponent';
 import ListProfessorComponent from './component/professor/ListProfessorComponent';
-import AddOrUpdateProfessor from './component/professor/AddOrUpdateProfessor';
+import AddOrUpdateProfessorComponent from './component/professor/AddOrUpdateProfessorComponent';
+import ListCourseComponent from './component/course/ListCourseComponent';
+import AddOrUpdateCourseComponent from './component/course/AddOrUpdateCourseComponent';
 
 
 function App() {
@@ -27,8 +29,13 @@ function App() {
 
           {/* Professor Routing */}
           <Route path="/professors" element={<ListProfessorComponent />} />
-          <Route path="/add-professor" element={<AddOrUpdateProfessor />} />
-          <Route path ="edit-professor/:id" element={<AddOrUpdateProfessor />} />
+          <Route path="/add-professor" element={<AddOrUpdateProfessorComponent />} />
+          <Route path ="edit-professor/:id" element={<AddOrUpdateProfessorComponent />} />
+
+        {/* Course Routing */}
+        <Route path="/courses" element={<ListCourseComponent />} />        
+        <Route path="/add-course" element={<AddOrUpdateCourseComponent/>} />
+        <Route path ="edit-course/:id" element={<AddOrUpdateCourseComponent />} />
 
 
           </Routes>

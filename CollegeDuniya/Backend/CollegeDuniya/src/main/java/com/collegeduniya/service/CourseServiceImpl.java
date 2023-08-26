@@ -101,4 +101,15 @@ public class CourseServiceImpl implements CourseService{
 		return "Deleted student : " + student.getFirstName();
 	}
 
+	
+	@Override
+	public String deleteCourseById(Long id) {
+		Course course = courseRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));
+		List<Course> courselist = courseRepo.findAll();
+		courselist.remove(course);
+		courseRepo.delete(course);
+		courseRepo.saveAll(courselist);
+		return course.getCourseName()+" was removed";
+	}
 }

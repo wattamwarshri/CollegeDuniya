@@ -27,8 +27,8 @@ public class Exam {
 	private Long examId;
 	@Column(length = 10)
 	private LocalDate examDate;
-	@Column(length = 10)
-	private String examType;
+	@Column(length = 30)
+	private String examName;
 	@Column(length = 20)
 	private String examVenue;
 	

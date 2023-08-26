@@ -12,7 +12,7 @@ const HeaderComponent = () => {
                                 <div className="navbar-nav">
                                     <a className="nav-link active" aria-current="page" href="/students">Students</a>
                                     <a className="nav-link" href="/departments">Departments</a>
-                                    <a className="nav-link" href="#">Courses</a>
+                                    <a className="nav-link" href="courses">Courses</a>
                                     <a className="nav-link" href="/professors">Professors</a>
                                     <a className="nav-link" href="#">Subjects</a>
                                     
