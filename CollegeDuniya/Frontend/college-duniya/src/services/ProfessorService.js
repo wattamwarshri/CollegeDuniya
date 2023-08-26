@@ -24,6 +24,11 @@ class ProfessorService
         return axios.put(PROFESSOR_API_BASE_URL+ "/updateProfessor/"+professorId,professor);
     }
 
+    deleteProfessor(professorId)
+    {
+        return axios.delete(PROFESSOR_API_BASE_URL + "/deleteSingleProfessor/"+professorId);
+    }
+
 }
 
 export default new ProfessorService();
