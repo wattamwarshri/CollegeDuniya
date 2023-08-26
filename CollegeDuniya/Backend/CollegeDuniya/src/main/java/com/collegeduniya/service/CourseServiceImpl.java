@@ -77,5 +77,18 @@ public class CourseServiceImpl implements CourseService{
 		}
 		return courseDtoList;
 	}
+	
+	@Override
+	public String updateCourseDetails(CourseDto courseDto, Long id) {
+		
+		Department department = departmentRepo.findByDepartmentName(courseDto.getDepartmentName())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid Department Id !!!"));
+		Course course = courseRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));
+		course.setDepartment(department);
+		mapper.map(courseDto, course);
+	
+		return course.getCourseName()+" successfully updated";
+	}
 
 }
