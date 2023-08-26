@@ -1,5 +1,7 @@
 package com.collegeduniya.service;
 
+import java.util.List;
+
 import com.collegeduniya.dto.SubjectDto;
 
 public interface SubjectService {
@@ -9,4 +11,6 @@ public interface SubjectService {
 	   String updateSubjectDetails(SubjectDto subjectDto, Long subjectId);
 	   
 	   String deleteSubjectById(Long subjectId);
+	   
+	   List<SubjectDto> getAllSubject();
 }

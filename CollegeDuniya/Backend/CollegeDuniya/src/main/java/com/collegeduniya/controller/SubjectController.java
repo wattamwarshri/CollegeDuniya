@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -53,6 +54,20 @@ public class SubjectController {
 		try {
 			System.out.println("in delete Subject by id");
 			return new ResponseEntity<>(subjectService.deleteSubjectById(subjectId),HttpStatus.OK);
+		}
+		catch(RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
+	
+	@GetMapping("/ListOfSubjects")
+	public ResponseEntity<?> getAllSubject()
+	{
+//		List<SubjectDto> allSubject = this.subjectService.getAllSubject();
+//		return new ResponseEntity<List<SubjectDto>>(allSubject,HttpStatus.OK);
+		try {
+			System.out.println("in get all available subjects ");
+			return new ResponseEntity<>(subjectService.getAllSubject(),HttpStatus.OK);
 		}
 		catch(RuntimeException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));

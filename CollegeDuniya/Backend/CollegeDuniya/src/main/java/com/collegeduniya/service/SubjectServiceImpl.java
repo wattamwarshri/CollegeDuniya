@@ -1,5 +1,6 @@
 package com.collegeduniya.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -68,6 +69,21 @@ public class SubjectServiceImpl implements SubjectService {
 		return sub.getSubjectName()+" was removed";
 		
 		//this.subRepo.delete(sub);
+	}
+	
+	@Override
+	public List<SubjectDto> getAllSubject() {
+		// TODO Auto-generated method stub
+		//return null;
+		List<Subject> allSubjects = this.subRepo.findAll();
+		//List<SubjectDto> subDtos = allSubjects.stream().map((subject) -> this.modelMapper.map(subject, SubjectDto.class)).collect(Collectors.toList());
+		List<SubjectDto> subjectDtoList = new ArrayList<SubjectDto>();
+		for(Subject subject : allSubjects) {
+			SubjectDto subjectDto = modelMapper.map(subject,SubjectDto.class);
+			subjectDto.setProfessorName(subject.getProfessor().getFirstName());
+			subjectDtoList.add(subjectDto);
+		}
+		return subjectDtoList;
 	}
 
 }
