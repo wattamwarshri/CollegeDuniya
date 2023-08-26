@@ -13,6 +13,7 @@ import com.collegeduniya.custom_exceptions.ResourceNotFoundException;
 import com.collegeduniya.dto.CourseDto;
 import com.collegeduniya.entities.Course;
 import com.collegeduniya.entities.Department;
+import com.collegeduniya.entities.Student;
 import com.collegeduniya.repository.CourseRepository;
 import com.collegeduniya.repository.DepartmentRepository;
 import com.collegeduniya.repository.StudentRepository;
@@ -89,6 +90,15 @@ public class CourseServiceImpl implements CourseService{
 		mapper.map(courseDto, course);
 	
 		return course.getCourseName()+" successfully updated";
+	}
+	@Override
+	public String cancelStudentFromCourse(Long courseId, Long studentId) {
+		Course course = courseRepo.findById(courseId).orElseThrow(() -> new ResourceNotFoundException("Invalid Course ID!!!!!"));
+		Student student = studentRepo.findById(studentId).orElseThrow(() -> new ResourceNotFoundException("Invalid Student ID!!!!!"));
+		course.removeStudent(student);
+	    studentRepo.delete(student);
+	    courseRepo.save(course);
+		return "Deleted student : " + student.getFirstName();
 	}
 
 }

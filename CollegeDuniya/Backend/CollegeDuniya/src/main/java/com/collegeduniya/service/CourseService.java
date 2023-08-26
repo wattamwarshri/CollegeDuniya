@@ -12,4 +12,6 @@ public interface CourseService {
 	List<CourseDto> getAllCoursesByDepartmentName(String deptName);
 	List<CourseDto> getAllCourses();
 	String updateCourseDetails(CourseDto courseDto,Long id);
+	String cancelStudentFromCourse(Long courseId, Long studentId);
+
 }
