@@ -56,7 +56,6 @@ const ListProfessorComponent = () => {
                 <td>{professor.password}</td>
                 <td>{professor.addressPincode}</td>
                 <td>{professor.departmentName}</td>
-
                 <center>
                   <td>
                      <Link className="btn btn-info btn-block mb-4" to={`/edit-professor/${professor.professor_id}`}>Edit</Link> 

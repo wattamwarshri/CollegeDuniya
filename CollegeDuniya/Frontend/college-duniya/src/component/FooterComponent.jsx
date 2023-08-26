@@ -6,7 +6,7 @@ const FooterComponent = () => {
       <footer
         className="bg-dark text-center text-white"
         style={{
-          position: "fixed",
+          position: "static",
           bottom: 0,
           width: 100 + "%",
           height: 67 + "px",
