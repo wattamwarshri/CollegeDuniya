@@ -18,7 +18,7 @@ const ListCourseComponent = () => {
         <div>
             {/* JSX Code */}
             <h1 className="text-center">Course List </h1>
-            <Link to="/add-department">
+            <Link to="/add-course">
                 <div className="row">
                     <button className="btn btn-primary">Add Course</button>
                 </div>{" "}
