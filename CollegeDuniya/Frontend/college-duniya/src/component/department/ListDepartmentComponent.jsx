@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import DepartmentService from "../../services/DepartmentService"
 
 const ListDepartmentComponent = () => {
-
+  
     const [departments, setDepartments] = useState([])
 
     useEffect(() => {
