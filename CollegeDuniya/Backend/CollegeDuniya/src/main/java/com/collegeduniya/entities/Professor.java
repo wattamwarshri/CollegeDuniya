@@ -53,6 +53,10 @@ public class Professor {
 	@OneToMany(mappedBy = "professor", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Student> students = new ArrayList<Student>();
 	
+	@OneToMany(mappedBy = "professor", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Subject> subjects = new ArrayList<Subject>();
+
+	
 	//helper methods
 	public void addStudent(Student s) {
 		students.add(s);
@@ -61,6 +65,16 @@ public class Professor {
 
 	public void removeStudent(Student s) {
 		students.remove(s);
+		s.setProfessor(null);
+	}
+	
+	public void addsubject(Subject s) {
+		subjects.add(s);
+		s.setProfessor(this);
+	}
+	
+	public void removeSubject(Subject s) {
+		subjects.remove(s);
 		s.setProfessor(null);
 	}
 	
