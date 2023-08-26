@@ -2,6 +2,7 @@ package com.collegeduniya.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -98,6 +99,21 @@ public class SubjectServiceImpl implements SubjectService {
 		return subjectDto;
 
 	}
-
-
+	
+	 @Override
+	    public List<SubjectDto> getAllSubjectsByProfessorName(String profName) {
+	    	Professor prof = this.profRepo.findByFirstName(profName).orElseThrow(() -> new ResourceNotFoundException("professor name was not found"));
+	    	List<Subject> subjects = this.subRepo.findAllByProfessor(prof);
+	    	
+	    	//List<SubjectDto> subjectDtos = subjects.stream().map((subject) -> this.modelMapper.map(subject,SubjectDto.class)).collect(Collectors.toList());
+	    	List<SubjectDto> subjectDtoList= new ArrayList<SubjectDto>();
+			for (Subject subject : subjects) {
+				SubjectDto subjectDto = modelMapper.map(subject,SubjectDto.class);
+				subjectDto.setProfessorName(profName);
+				subjectDtoList.add(subjectDto);
+			}
+			return subjectDtoList;
+	    	//return subjectDtos;
+	    	
+	 	}
 }

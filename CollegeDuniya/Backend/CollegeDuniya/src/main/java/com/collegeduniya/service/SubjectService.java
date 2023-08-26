@@ -15,4 +15,6 @@ public interface SubjectService {
 	   List<SubjectDto> getAllSubject();
 	   
 	   SubjectDto getSubjectById(Long subjectId);
+	   
+	   List<SubjectDto> getAllSubjectsByProfessorName(String profName);
 }

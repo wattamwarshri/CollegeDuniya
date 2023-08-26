@@ -1,5 +1,7 @@
 package com.collegeduniya.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -87,4 +89,14 @@ public class SubjectController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
 		}
 	}
+	
+	@GetMapping("/professor_Name/{professorName}")
+	public ResponseEntity<?> getAllSubjectByProfessorName(@PathVariable String professorName)
+	{
+      		List<SubjectDto> subjectsDto = this.subjectService.getAllSubjectsByProfessorName(professorName);
+	       	
+		  return new ResponseEntity<List<SubjectDto>>(subjectsDto,HttpStatus.OK);
+	}
+	
+	
 }
