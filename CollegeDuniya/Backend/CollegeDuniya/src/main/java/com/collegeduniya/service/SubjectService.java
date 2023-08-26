@@ -13,4 +13,6 @@ public interface SubjectService {
 	   String deleteSubjectById(Long subjectId);
 	   
 	   List<SubjectDto> getAllSubject();
+	   
+	   SubjectDto getSubjectById(Long subjectId);
 }

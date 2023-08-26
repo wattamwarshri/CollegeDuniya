@@ -85,5 +85,19 @@ public class SubjectServiceImpl implements SubjectService {
 		}
 		return subjectDtoList;
 	}
+	
+	@Override
+	public SubjectDto getSubjectById(Long subjectId) {
+		// TODO Auto-generated method stub
+		//return null;
+		Subject sub = this.subRepo.findById(subjectId).orElseThrow(() -> new ResourceNotFoundException("Subject Id was not found"));
+		// TODO Auto-generated method stub
+		//return null;
+		SubjectDto subjectDto = modelMapper.map(sub,SubjectDto.class);
+		subjectDto.setProfessorName(sub.getProfessor().getFirstName());
+		return subjectDto;
+
+	}
+
 
 }

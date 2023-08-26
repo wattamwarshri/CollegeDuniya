@@ -73,4 +73,18 @@ public class SubjectController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
 		}
 	}
+	
+	@GetMapping("/subjects/{subjectId}")
+	public ResponseEntity<?> getSubjectById(@PathVariable Long subjectId)
+	{
+//	    SubjectDto subjectDto = this.subjectService.getSubjectById(subjectId);
+//		return new ResponseEntity<SubjectDto>(subjectDto,HttpStatus.OK);
+		try {
+			System.out.println("in get subject by id");
+			return new ResponseEntity<>(subjectService.getSubjectById(subjectId),HttpStatus.OK);
+		}
+		catch(RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
 }
