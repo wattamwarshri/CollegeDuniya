@@ -45,4 +45,16 @@ public class CourseController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
 		}
 	}
+	
+	@GetMapping("/department_Name/{departmentName}")
+	public ResponseEntity<?> getAllCourseByDepartmentName(@PathVariable String departmentName) {
+		try {
+
+			System.out.println("in get courses by department: "+departmentName);
+			return new ResponseEntity<>(courseService.getAllCoursesByDepartmentName(departmentName), HttpStatus.OK);
+		} catch (RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+
+	}
 }
