@@ -61,7 +61,7 @@ const ListProfessorComponent = () => {
                      <Link className="btn btn-info btn-block mb-4" to={`/edit-professor/${professor.professor_id}`}>Edit</Link> 
                     
 
-                     <button className="btn btn-danger btn-block mb-4">Delete</button> 
+                     <button className="btn btn-danger btn-block mb-4" >Delete</button> 
                      {/* onClick={()=> deleteProfessor(professor.professor_id)} style={{marginLeft : "10px"}} */}
                     
                   </td>

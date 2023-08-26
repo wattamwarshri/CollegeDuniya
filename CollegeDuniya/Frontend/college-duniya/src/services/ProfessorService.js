@@ -14,6 +14,16 @@ class ProfessorService
         return axios.post(PROFESSOR_API_BASE_URL,professor);
     }
 
+    getProfessorById(professorId)
+    {
+        return axios.get(PROFESSOR_API_BASE_URL+ "/singleProfessor/"+ professorId);
+    }
+
+    updateProfessor(professorId,professor)
+    {
+        return axios.put(PROFESSOR_API_BASE_URL+ "/updateProfessor/"+professorId,professor);
+    }
+
 }
 
 export default new ProfessorService();

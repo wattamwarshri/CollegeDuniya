@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ProfessorService from "../../services/ProfessorService"
 
 const AddOrUpdateProfessor = () => {
 
+    
     const [professor_id, setProfessor_id] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("")
@@ -15,14 +16,22 @@ const AddOrUpdateProfessor = () => {
     const navigate = useNavigate()
     const { id } = useParams()
 
-    const title = () => {
-        if (id) {
-            return <h1 className="text-center">Update Professor</h1>
-        }
-        else {
-            return <h1 className="text-center">Add Professor</h1>
-        }
-    }
+
+    useEffect(() => {
+       ProfessorService.getProfessorById(id).then((response)=>
+       {
+        setProfessor_id(response.data.professor_id);
+        setFirstName(response.data.firstName);
+        setLastName(response.data.lastName);
+        setGender(response.data.gender);
+        setEmail(response.data.email);
+        setPassword(response.data.password);
+        setAddressPincode(response.data.addressPincode)
+        setDepartmentName(response.data.departmentName);
+       }).catch(error => {console.log(error);})
+    }, [])
+
+    
 
     const saveOrUpdateProfessor = (e) =>
     {
@@ -44,6 +53,15 @@ const AddOrUpdateProfessor = () => {
   
       }
 
+
+    const title = () => {
+        if (id) {
+            return <h1 className="text-center">Update Professor</h1>
+        }
+        else {
+            return <h1 className="text-center">Add Professor</h1>
+        }
+    }
 
     return (
         <div>
