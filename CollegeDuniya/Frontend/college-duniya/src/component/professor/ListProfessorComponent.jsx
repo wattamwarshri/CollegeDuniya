@@ -1,22 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ProfessorService from '../../services/ProfessorService';
+import DepartmentService from '../../services/DepartmentService';
 
 const ListProfessorComponent = () => {
 
     const [professors, setProfessors] = useState([]);
     
     useEffect(() => {
-        ProfessorService.getAllProfessors().then((response)=>{
-            setProfessors(response.data)
-        }).catch(error => {
-            console.log(error);
-        })
+       
+      getAllProfessors();
     }, [])
 
 
+    const deleteProfessor = (professorId) =>
+    {
+      ProfessorService.deleteProfessor(professorId).then((response)=>{ 
+      getAllProfessors();
+      }).catch(error => {
+        console.log(error);
+    })
+    }
 
-
+    const getAllProfessors = () =>
+    {
+      ProfessorService.getAllProfessors().then((response)=>{
+        setProfessors(response.data)
+    }).catch(error => {
+        console.log(error);
+    })
+    }
 
   return (
     <div>
@@ -61,8 +74,8 @@ const ListProfessorComponent = () => {
                      <Link className="btn btn-info btn-block mb-4" to={`/edit-professor/${professor.professor_id}`}>Edit</Link> 
                     
 
-                     <button className="btn btn-danger btn-block mb-4" >Delete</button> 
-                     {/* onClick={()=> deleteProfessor(professor.professor_id)} style={{marginLeft : "10px"}} */}
+                     <button className="btn btn-danger btn-block mb-4" onClick={()=> deleteProfessor(professor.professor_id)} style={{marginLeft : "10px"}}>Delete</button> 
+                     
                     
                   </td>
                 </center>
