@@ -24,7 +24,10 @@ class CourseService
         return axios.put(COURSE_API_BASE_URL+ "/updateCourse/"+courseId,course);
     }
 
-
+    deleteCourse(courseId)
+    {
+        return axios.delete(COURSE_API_BASE_URL + "/deleteSingleCourse/"+courseId);
+    }
 
 }
 

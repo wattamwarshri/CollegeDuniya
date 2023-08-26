@@ -14,6 +14,24 @@ const ListCourseComponent = () => {
         })
     }, [])
 
+    const deleteCourse = (courseId) =>
+    {
+        CourseService.deleteCourse(courseId).then((response)=>{ 
+      getAllCourses();
+      }).catch(error => {
+        console.log(error);
+    })
+    }
+
+    const getAllCourses = () =>
+    {
+        CourseService.getAllCourses().then((response)=>{
+        setCourses(response.data)
+    }).catch(error => {
+        console.log(error);
+    })
+    }
+
     return (
         <div>
             {/* JSX Code */}
@@ -49,7 +67,7 @@ const ListCourseComponent = () => {
                                         <Link className="btn btn-info btn-block mb-4" to={`/edit-course/${course.courseId}`}>Edit</Link>
 
 
-                                        {/* <button className="btn btn-danger btn-block mb-4" onClick={() => deleteDepartment(department.departmentId)} style={{ marginLeft: "10px" }}>Delete</button> */}
+                                        <button className="btn btn-danger btn-block mb-4" onClick={() => deleteCourse(course.courseId)} style={{ marginLeft: "10px" }}>Delete</button>
 
                                     </td>
                                 </center>
