@@ -26,7 +26,8 @@ const AddOrUpdateCourseComponent = () => {
     }
   
     else{
-        
+        CourseService.addCourse(course).then((response)=>{console.log(response.data)
+            navigate("/courses")}).catch(error => {console.log(error);})
     }
       }
 
