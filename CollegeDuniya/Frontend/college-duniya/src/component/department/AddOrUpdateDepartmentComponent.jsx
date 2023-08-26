@@ -46,11 +46,6 @@ const AddDepartmentComponent = () => {
   
       }
 
-   
-
-
-
-
     const title = () =>
     {
       if(id)

@@ -16,7 +16,7 @@ class DepartmentService
 
     updateDepartment(departmentId,department)
     {
-        return axios.put(DEPARTMENT_API_BASE_URL+"/updateDepartment"+ departmentId, department);
+        return axios.put(DEPARTMENT_API_BASE_URL+"/updateDepartment/"+ departmentId, department);
     }
 
     getDepartmentById(departmentId)
