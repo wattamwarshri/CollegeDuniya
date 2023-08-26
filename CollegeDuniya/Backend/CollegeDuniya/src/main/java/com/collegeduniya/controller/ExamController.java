@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,5 +45,19 @@ public class ExamController {
 //		return new ResponseEntity<SubjectDto>(updateSubject, HttpStatus.OK);
 		
 		return examService.updateExamDetails(examDto, examId);
+	}
+	
+	@DeleteMapping("/deleteSingleExam/{examId}")
+	public ResponseEntity<?> deleteSubjectById(@PathVariable Long examId )
+	{
+//		this.subjectService.deleteSubject(subjectId);
+//	    return new ApiResponse("Subject is successfully deleted");
+		try {
+			System.out.println("in delete Subject by id");
+			return new ResponseEntity<>(examService.deleteExamById(examId),HttpStatus.OK);
+		}
+		catch(RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
 	}
 }

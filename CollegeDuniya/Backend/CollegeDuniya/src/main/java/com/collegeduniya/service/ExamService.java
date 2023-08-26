@@ -7,4 +7,6 @@ public interface ExamService {
 	 String addExam(ExamDto examDto);
 	 
 	  String updateExamDetails(ExamDto examDto, Long examId);
+	  
+	  String deleteExamById(Long examId);
 }

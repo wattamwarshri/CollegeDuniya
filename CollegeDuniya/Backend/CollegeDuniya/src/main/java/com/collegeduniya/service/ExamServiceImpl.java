@@ -1,5 +1,7 @@
 package com.collegeduniya.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -51,6 +53,22 @@ public class ExamServiceImpl implements ExamService{
 		
 		
  		return exam.getExamName() +" successfully Updated";
+
+	}
+	
+	@Override
+	public String deleteExamById(Long examId) {
+		// TODO Auto-generated method stub
+		//return null;
+        Exam exam = this.examRepo.findById(examId).orElseThrow(() -> new ResourceNotFoundException("exam Id was not found"));
+		
+		List<Exam> examList = examRepo.findAll();
+		examList.remove(exam);
+		examRepo.delete(exam);
+		examRepo.saveAll(examList);
+		return exam.getExamName()+" was removed";
+		
+		//this.subRepo.delete(sub);
 
 	}
 }
