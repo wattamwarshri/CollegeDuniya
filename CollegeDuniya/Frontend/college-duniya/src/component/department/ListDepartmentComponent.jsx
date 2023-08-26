@@ -24,6 +24,14 @@ const ListDepartmentComponent = () => {
       });
     }
 
+
+    const deleteDepartment = (departmentId) =>
+    {
+        DepartmentService.deleteDepartment(departmentId).then((response)=>{
+            getAllDepartments();
+        }).catch(error=> {console.log(error);})
+    }
+
   return (
     <div>
       {/* JSX Code */}
@@ -57,8 +65,7 @@ const ListDepartmentComponent = () => {
                      <Link className="btn btn-info btn-block mb-4" to={`/edit-department/${department.departmentId}`}>Edit</Link> 
                     
 
-                     <button className="btn btn-danger btn-block mb-4" >Delete</button> 
-                     {/* onClick={()=>deleteStudent(student.id)} style={{marginLeft : "10px"}} */}
+                     <button className="btn btn-danger btn-block mb-4" onClick={()=> deleteDepartment(department.departmentId)} style={{marginLeft : "10px"}}>Delete</button> 
                     
                   </td>
                 </center>
