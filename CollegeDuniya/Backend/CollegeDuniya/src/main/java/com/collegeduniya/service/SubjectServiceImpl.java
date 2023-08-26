@@ -1,5 +1,7 @@
 package com.collegeduniya.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -52,6 +54,20 @@ public class SubjectServiceImpl implements SubjectService {
  		return subject.getSubjectName()+"successfully Updated";
 		
 		
+	}
+	
+	@Override
+	public String deleteSubjectById(Long subjectId) {
+		// TODO Auto-generated method stub
+		Subject sub = this.subRepo.findById(subjectId).orElseThrow(() -> new ResourceNotFoundException("subject Id was not found"));
+		
+		List<Subject> subjectList = subRepo.findAll();
+		subjectList.remove(sub);
+		subRepo.delete(sub);
+		subRepo.saveAll(subjectList);
+		return sub.getSubjectName()+" was removed";
+		
+		//this.subRepo.delete(sub);
 	}
 
 }

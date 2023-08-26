@@ -3,6 +3,7 @@ package com.collegeduniya.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,5 +45,17 @@ public class SubjectController {
 		return subjectService.updateSubjectDetails(subjectDto, subjectId);
 	}
 	
-	
+	@DeleteMapping("/deleteSingleSubject/{subjectId}")
+	public ResponseEntity<?> deleteSubjectById(@PathVariable Long subjectId )
+	{
+//		this.subjectService.deleteSubject(subjectId);
+//	    return new ApiResponse("Subject is successfully deleted");
+		try {
+			System.out.println("in delete Subject by id");
+			return new ResponseEntity<>(subjectService.deleteSubjectById(subjectId),HttpStatus.OK);
+		}
+		catch(RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
 }
