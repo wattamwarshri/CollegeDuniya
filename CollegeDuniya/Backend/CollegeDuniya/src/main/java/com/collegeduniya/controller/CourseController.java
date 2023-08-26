@@ -92,5 +92,15 @@ public class CourseController {
 		}
 	}
 	
+	@DeleteMapping("/deleteSingleCourse/{id}")
+	public ResponseEntity<?> deleteCourseById(@PathVariable Long id){
+		try {
+			System.out.println("in delete Course by id ");
+			return new ResponseEntity<>(courseService.deleteCourseById(id), HttpStatus.OK);
+		}
+		catch (RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
 	
 }

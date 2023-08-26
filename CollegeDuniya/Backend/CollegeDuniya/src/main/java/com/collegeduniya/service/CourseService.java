@@ -13,5 +13,5 @@ public interface CourseService {
 	List<CourseDto> getAllCourses();
 	String updateCourseDetails(CourseDto courseDto,Long id);
 	String cancelStudentFromCourse(Long courseId, Long studentId);
-
+	String deleteCourseById(Long id);
 }
