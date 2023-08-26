@@ -38,5 +38,20 @@ public class SubjectServiceImpl implements SubjectService {
 	    prof.addsubject(newSubject);
 		return newSubject.getSubjectName()+"subject added successfully";
 	}
+	
+	@Override
+	public String updateSubjectDetails(SubjectDto subjectDto, Long subjectId) {
+		
+		Subject subject = subRepo.findById(subjectId).orElseThrow(() -> new ResourceNotFoundException("Invalid Id"));
+		Professor prof = this.profRepo.findByFirstName(subjectDto.getProfessorName()).orElseThrow(() -> new ResourceNotFoundException("professor name was not found"));
+		subject.setProfessor(prof);
+		this.subRepo.save(subject);
+		modelMapper.map(subjectDto, subject);
+		
+		
+ 		return subject.getSubjectName()+"successfully Updated";
+		
+		
+	}
 
 }

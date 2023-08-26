@@ -6,5 +6,5 @@ public interface SubjectService {
 	
 	   String addSubject(SubjectDto subjectDto);
 	   
-
+	   String updateSubjectDetails(SubjectDto subjectDto, Long subjectId);
 }
