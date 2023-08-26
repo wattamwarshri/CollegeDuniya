@@ -39,5 +39,14 @@ public class CourseServiceImpl implements CourseService{
 		department.addCourse(persistentcourse);
 		return persistentcourse.getCourseName() + " Course added successfully";
 	}
+	
+	@Override
+	public CourseDto getCourseById(Long id) {
+		Course course = courseRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));
+		CourseDto courseDto = mapper.map(course, CourseDto.class);
+		courseDto.setDepartmentName(course.getDepartment().getDepartmentName());
+		return courseDto;
+	}
 
 }
