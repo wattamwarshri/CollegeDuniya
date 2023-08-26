@@ -28,6 +28,7 @@ function App() {
           {/* Professor Routing */}
           <Route path="/professors" element={<ListProfessorComponent />} />
           <Route path="/add-professor" element={<AddOrUpdateProfessor />} />
+          <Route path ="edit-professor/:id" element={<AddOrUpdateProfessor />} />
 
 
           </Routes>
