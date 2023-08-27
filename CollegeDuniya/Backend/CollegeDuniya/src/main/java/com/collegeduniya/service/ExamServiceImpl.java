@@ -7,14 +7,9 @@ import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.collegeduniya.custom_exceptions.ResourceNotFoundException;
-import com.collegeduniya.dto.ApiResponse;
 import com.collegeduniya.dto.ExamDto;
 import com.collegeduniya.entities.Department;
 import com.collegeduniya.entities.Exam;
@@ -107,6 +102,23 @@ public class ExamServiceImpl implements ExamService{
 		return examDto;
 
 	}
+	
+	@Override
+	public List<ExamDto> getAllExamsByDepartmentName(String deptName) {
+		// TODO Auto-generated method stub
+		//return null;
+		Department dept = this.deptRepo.findByDepartmentName(deptName).orElseThrow(() -> new ResourceNotFoundException("department name was not found"));
+    	List<Exam> exams = this.examRepo.findAllByDepartment(dept);
+    	
+    	//List<SubjectDto> subjectDtos = subjects.stream().map((subject) -> this.modelMapper.map(subject,SubjectDto.class)).collect(Collectors.toList());
+    	List<ExamDto> examDtoList= new ArrayList<ExamDto>();
+		for (Exam exam : exams) {
+			ExamDto examDto = modelMapper.map(exam,ExamDto.class);
+			examDto.setDepartmentName(deptName);
+			examDtoList.add(examDto);
+		}
+		return examDtoList;
+	}       
 	
 	
 }

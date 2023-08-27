@@ -1,5 +1,7 @@
 package com.collegeduniya.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -88,5 +90,13 @@ public class ExamController {
 		catch(RuntimeException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
 		}
+	}
+	
+	@GetMapping("/department_name/{departmentName}")
+	public ResponseEntity<?> getAllExamByDepartmentName(@PathVariable String departmentName)
+	{
+      	  List<ExamDto> examsDto = this.examService.getAllExamsByDepartmentName(departmentName);
+	       	
+		  return new ResponseEntity<List<ExamDto>>(examsDto,HttpStatus.OK);
 	}
 }

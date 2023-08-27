@@ -15,4 +15,6 @@ public interface ExamService {
 	  List<ExamDto> getAllExam();
 	  
 	  ExamDto getExamById(Long examId);
+	  
+	  List<ExamDto> getAllExamsByDepartmentName(String deptName);
 }
