@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
@@ -42,9 +41,8 @@ public class Student {
 	private String password;
 	@Transient
 	private String confirmPassword;
-	
-	@OneToOne(mappedBy = "student")
-	private Address address;
+	@Column
+	private String address;
 	
 	@ManyToOne(fetch =FetchType.EAGER)
 	@JoinColumn(name = "course_id")
