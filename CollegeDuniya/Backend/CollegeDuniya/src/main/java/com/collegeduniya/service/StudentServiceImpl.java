@@ -74,5 +74,31 @@ public class StudentServiceImpl implements StudentService {
 		}
 		return studentDtoList;
 	}
+	
+	@Override
+	public String updateStudent(StudentDto studentDto,Long id) {
+		Student student = studentRepo.findById(id).orElseThrow(() 
+					-> new ResourceNotFoundException("Invalid id"));
+		Professor professor = professorRepo.findByFirstName(studentDto.getProfessorName())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid Professor Name!!!"));
+		Course course = courseRepo.findByCourseName(studentDto.getCourseName())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid Course Name !!!"));
+		student.setProfessor(professor);
+		student.setCourse(course);
+		mapper.map(studentDto, student);
+		
+		return student.getFirstName()+" successfully updated";
+	}
+	
+	@Override
+	public String deleteStudentById(Long id) {
+		Student s = studentRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));
+		List<Student> list = studentRepo.findAll();
+		list.remove(s);
+		studentRepo.delete(s);
+		studentRepo.saveAll(list);
+		return s.getFirstName()+" was removed";
+	}	
 
 }
