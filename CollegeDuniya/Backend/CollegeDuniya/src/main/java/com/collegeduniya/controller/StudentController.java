@@ -43,4 +43,15 @@ public class StudentController {
 		}
 	}
 	
+	@GetMapping("/listOfStudents")
+	public ResponseEntity<?> getAllStudents() {
+		try {
+			System.out.println("in getAllStudents");
+			return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
+			} 
+		catch (RuntimeException e) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+			}
+	}
+	
 }

@@ -1,5 +1,8 @@
 package com.collegeduniya.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -58,4 +61,18 @@ public class StudentServiceImpl implements StudentService {
 		stud.setProfessorName(student.getProfessor().getFirstName()+" "+student.getProfessor().getLastName());
 		return stud;
 	}
+	
+	@Override
+	public List<StudentDto> getAllStudents() {
+		List<Student> studentList = studentRepo.findAll();
+		List<StudentDto> studentDtoList = new ArrayList<StudentDto>();
+		for (Student student : studentList) {
+			StudentDto studentDto = mapper.map(student,StudentDto.class);
+			studentDto.setCourseName(student.getCourse().getCourseName());
+			studentDto.setProfessorName(student.getProfessor().getFirstName());
+			studentDtoList.add(studentDto);
+		}
+		return studentDtoList;
+	}
+
 }
