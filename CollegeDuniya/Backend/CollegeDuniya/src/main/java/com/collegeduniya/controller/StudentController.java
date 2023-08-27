@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,5 +55,18 @@ public class StudentController {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
 			}
 	}
+	
+	@PutMapping("/updateStudent/{id}")
+	public ResponseEntity<?> updateStudent(@RequestBody StudentDto studentDto, @PathVariable Long id) {
+		try {
+			System.out.println("in update department by id ");
+			return new ResponseEntity<>(studentService.updateStudent(studentDto, id), HttpStatus.OK);
+		}
+		catch (RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
+	
+	
 	
 }

@@ -8,4 +8,6 @@ public interface StudentService {
 	String addStudent(StudentDto studentDto);
 	StudentDto getStudentById(Long id);
 	List<StudentDto> getAllStudents();
+	String updateStudent(StudentDto studentDto,Long id);
+	
 }
