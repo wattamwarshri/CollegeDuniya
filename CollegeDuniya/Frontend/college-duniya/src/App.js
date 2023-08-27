@@ -11,6 +11,8 @@ import ListCourseComponent from './component/course/ListCourseComponent';
 import AddOrUpdateCourseComponent from './component/course/AddOrUpdateCourseComponent';
 import AddOrUpdateStudentComponent from './component/student/AddOrUpdateStudentComponent';
 import ListStudentComponent from './component/student/ListStudentComponent';
+import ListSubjectComponent from './component/subject/ListSubjectComponent';
+import AddOrUpdateSubjectComponent from './component/subject/AddOrUpdateSubjectComponent';
 
 
 function App() {
@@ -39,12 +41,17 @@ function App() {
             <Route path="/add-course" element={<AddOrUpdateCourseComponent/>} />
             <Route path="edit-course/:id" element={<AddOrUpdateCourseComponent />} />
 
+            {/* Subject Routing */}
+            <Route path="/subjects" element={<ListSubjectComponent />} />
+            <Route path="/add-subject" element={<AddOrUpdateSubjectComponent />} />
+            <Route path="edit-subject/:id" element={<AddOrUpdateSubjectComponent />} />
+
             {/* Student Routing */}
             <Route path="/students" element={<ListStudentComponent />} />
             <Route path="/add-student" element={<AddOrUpdateStudentComponent/>} />
             <Route path="edit-student/:id" element={<AddOrUpdateStudentComponent/>} />
-
-
+            
+             
           </Routes>
         </div>
         <FooterComponent />
