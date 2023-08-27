@@ -51,7 +51,7 @@ public class ExamController {
 	}
 	
 	@DeleteMapping("/deleteSingleExam/{examId}")
-	public ResponseEntity<?> deleteSubjectById(@PathVariable Long examId )
+	public ResponseEntity<?> deleteExamById(@PathVariable Long examId )
 	{
 //		this.subjectService.deleteSubject(subjectId);
 //	    return new ApiResponse("Subject is successfully deleted");
