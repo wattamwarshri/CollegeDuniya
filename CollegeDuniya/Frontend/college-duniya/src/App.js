@@ -32,12 +32,12 @@ function App() {
             {/* Professor Routing */}
             <Route path="/professors" element={<ListProfessorComponent />} />
             <Route path="/add-professor" element={<AddOrUpdateProfessorComponent />} />
-            <Route path ="edit-professor/:id" element={<AddOrUpdateProfessorComponent />} />
+            <Route path="edit-professor/:id" element={<AddOrUpdateProfessorComponent />} />
 
             {/* Course Routing */}
             <Route path="/courses" element={<ListCourseComponent />} />        
             <Route path="/add-course" element={<AddOrUpdateCourseComponent/>} />
-            <Route path ="edit-course/:id" element={<AddOrUpdateCourseComponent />} />
+            <Route path="edit-course/:id" element={<AddOrUpdateCourseComponent />} />
 
             {/* Student Routing */}
             <Route path="/students" element={<ListStudentComponent />} />

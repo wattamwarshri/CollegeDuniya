@@ -6,6 +6,8 @@ const HeaderComponent = () => {
       <header className="App-header">
                     <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
                         <div className="container-fluid">
+                        {/* <img src="%PUBLIC_URL%/fav-icon1.png" alt="not found" /> */}
+                        
                             <a className="navbar-brand" href="/">CollegeDuniya</a>
                            
                             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -14,7 +16,8 @@ const HeaderComponent = () => {
                                     <a className="nav-link" href="/departments">Departments</a>
                                     <a className="nav-link" href="courses">Courses</a>
                                     <a className="nav-link" href="/professors">Professors</a>
-                                    <a className="nav-link" href="#">Subjects</a>
+                                    <a className="nav-link" href="/subjects">Subjects</a>
+                                    <a className="nav-link" href="/exams">Exams</a>
                                     
                                 </div>
                             </div>
