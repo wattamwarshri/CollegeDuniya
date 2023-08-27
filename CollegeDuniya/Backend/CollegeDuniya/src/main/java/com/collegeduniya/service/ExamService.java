@@ -1,5 +1,7 @@
 package com.collegeduniya.service;
 
+import java.util.List;
+
 import com.collegeduniya.dto.ExamDto;
 
 public interface ExamService {
@@ -9,4 +11,6 @@ public interface ExamService {
 	  String updateExamDetails(ExamDto examDto, Long examId);
 	  
 	  String deleteExamById(Long examId);
+	  
+	  List<ExamDto> getAllExam();
 }

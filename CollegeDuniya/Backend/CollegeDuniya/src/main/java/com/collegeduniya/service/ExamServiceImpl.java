@@ -1,5 +1,6 @@
 package com.collegeduniya.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -70,5 +71,22 @@ public class ExamServiceImpl implements ExamService{
 		
 		//this.subRepo.delete(sub);
 
+	}
+	
+	@Override
+	public List<ExamDto> getAllExam() {
+		// TODO Auto-generated method stub
+		//return null;
+		List<Exam> allExams = this.examRepo.findAll();
+		//List<SubjectDto> subDtos = allSubjects.stream().map((subject) -> this.modelMapper.map(subject, SubjectDto.class)).collect(Collectors.toList());
+		List<ExamDto> examDtoList = new ArrayList<ExamDto>();
+		for(Exam exam : allExams) {
+			ExamDto examDto = modelMapper.map(exam,ExamDto.class);
+			examDto.setDepartmentName(exam.getDepartment().getDepartmentName());
+			examDtoList.add(examDto);
+		}
+		return examDtoList;
+
+		
 	}
 }

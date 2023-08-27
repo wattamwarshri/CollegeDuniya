@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -55,6 +56,20 @@ public class ExamController {
 		try {
 			System.out.println("in delete Subject by id");
 			return new ResponseEntity<>(examService.deleteExamById(examId),HttpStatus.OK);
+		}
+		catch(RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
+	
+	@GetMapping("/ListOfExams")
+	public ResponseEntity<?> getAllExam()
+	{
+//		List<SubjectDto> allSubject = this.subjectService.getAllSubject();
+//		return new ResponseEntity<List<SubjectDto>>(allSubject,HttpStatus.OK);
+		try {
+			System.out.println("in get all available exams ");
+			return new ResponseEntity<>(examService.getAllExam(),HttpStatus.OK);
 		}
 		catch(RuntimeException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
