@@ -90,6 +90,15 @@ public class StudentServiceImpl implements StudentService {
 		return student.getFirstName()+" successfully updated";
 	}
 	
-	
+	@Override
+	public String deleteStudentById(Long id) {
+		Student s = studentRepo.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Invalid id"));
+		List<Student> list = studentRepo.findAll();
+		list.remove(s);
+		studentRepo.delete(s);
+		studentRepo.saveAll(list);
+		return s.getFirstName()+" was removed";
+	}	
 
 }
