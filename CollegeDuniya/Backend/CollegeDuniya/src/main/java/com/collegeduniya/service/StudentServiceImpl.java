@@ -49,4 +49,13 @@ public class StudentServiceImpl implements StudentService {
 		return persistentStudent.getFirstName() + " Student added successfully";
 	}
 	
+	@Override
+	public StudentDto getStudentById(Long id) {
+		Student student = studentRepo.findById(id).orElseThrow(() 
+						-> new ResourceNotFoundException("Invalid id"));
+		StudentDto stud = mapper.map(student, StudentDto.class);
+		stud.setCourseName(student.getCourse().getCourseName());
+		stud.setProfessorName(student.getProfessor().getFirstName()+" "+student.getProfessor().getLastName());
+		return stud;
+	}
 }
