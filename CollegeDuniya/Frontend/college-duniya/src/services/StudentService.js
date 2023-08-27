@@ -6,7 +6,7 @@ class StudentService
 {
     getAllStudents()
     {
-        return axios.get(STUDENT_API_BASE_URL + "/ListOfStudents");
+        return axios.get(STUDENT_API_BASE_URL + "/listOfStudents");
     }
 
     addStudent(student)
@@ -16,7 +16,7 @@ class StudentService
 
     getStudentById(studentId)
     {
-        return axios.get(STUDENT_API_BASE_URL+ "/students/"+ studentId);
+        return axios.get(STUDENT_API_BASE_URL+ "/singleStudent/"+ studentId);
     }
 
     updateStudent(studentId,student)

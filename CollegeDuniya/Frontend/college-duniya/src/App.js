@@ -9,6 +9,8 @@ import ListProfessorComponent from './component/professor/ListProfessorComponent
 import AddOrUpdateProfessorComponent from './component/professor/AddOrUpdateProfessorComponent';
 import ListCourseComponent from './component/course/ListCourseComponent';
 import AddOrUpdateCourseComponent from './component/course/AddOrUpdateCourseComponent';
+import AddOrUpdateStudentComponent from './component/student/AddOrUpdateStudentComponent';
+import ListStudentComponent from './component/student/ListStudentComponent';
 
 
 function App() {
@@ -27,15 +29,20 @@ function App() {
             <Route path="/edit-department/:id" element={<AddOrUpdateDepartmentComponent />} />
             {/* <Route path="delete-student" element={<LoginComponent />} /> */}
 
-          {/* Professor Routing */}
-          <Route path="/professors" element={<ListProfessorComponent />} />
-          <Route path="/add-professor" element={<AddOrUpdateProfessorComponent />} />
-          <Route path ="edit-professor/:id" element={<AddOrUpdateProfessorComponent />} />
+            {/* Professor Routing */}
+            <Route path="/professors" element={<ListProfessorComponent />} />
+            <Route path="/add-professor" element={<AddOrUpdateProfessorComponent />} />
+            <Route path ="edit-professor/:id" element={<AddOrUpdateProfessorComponent />} />
 
-        {/* Course Routing */}
-        <Route path="/courses" element={<ListCourseComponent />} />        
-        <Route path="/add-course" element={<AddOrUpdateCourseComponent/>} />
-        <Route path ="edit-course/:id" element={<AddOrUpdateCourseComponent />} />
+            {/* Course Routing */}
+            <Route path="/courses" element={<ListCourseComponent />} />        
+            <Route path="/add-course" element={<AddOrUpdateCourseComponent/>} />
+            <Route path ="edit-course/:id" element={<AddOrUpdateCourseComponent />} />
+
+            {/* Student Routing */}
+            <Route path="/students" element={<ListStudentComponent />} />
+            <Route path="/add-student" element={<AddOrUpdateStudentComponent/>} />
+            <Route path="edit-student/:id" element={<AddOrUpdateStudentComponent/>} />
 
 
           </Routes>
