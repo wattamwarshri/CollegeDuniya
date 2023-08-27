@@ -79,8 +79,10 @@ public class ProfessorServiceImpl implements ProfessorService {
 	public String updateProfessorDetails(ProfessorDto professorDto, Long id) {
 		Professor professor = professorRepo.findById(id).orElseThrow(() 
 				-> new ResourceNotFoundException("Invalid id"));	
+		Department department = departmentRepo.findByDepartmentName(professorDto.getDepartmentName())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid Department Id !!!"));
+		professor.setDepartment(department);
 		mapper.map(professorDto, professor);
-	
 		return professor.getFirstName()+" "+professor.getLastName()+" successfully updated";
 	}
 	

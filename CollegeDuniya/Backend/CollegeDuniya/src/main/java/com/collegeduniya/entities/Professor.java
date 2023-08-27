@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
@@ -42,9 +41,8 @@ public class Professor {
 	private String password;
 	@Transient
 	private String confirmPassword;
-	
-	@OneToOne(mappedBy = "professor")
-	private Address address;
+	@Column
+	private String address;
 	
 	@ManyToOne(fetch =FetchType.LAZY )
 	@JoinColumn(name = "department_id") // Optional BUT reco , to specify the name of FK col.

@@ -25,6 +25,6 @@ public class ProfessorDto {
 	@JsonIgnore
 	private String confirmPassword;
 	
-	private String addressPincode;
+	private String address;
 	private String departmentName;
 }
