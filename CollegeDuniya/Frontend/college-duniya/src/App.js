@@ -13,6 +13,8 @@ import AddOrUpdateStudentComponent from './component/student/AddOrUpdateStudentC
 import ListStudentComponent from './component/student/ListStudentComponent';
 import ListSubjectComponent from './component/subject/ListSubjectComponent';
 import AddOrUpdateSubjectComponent from './component/subject/AddOrUpdateSubjectComponent';
+import AddOrUpdateExamComponent from './component/exam/AddOrUpdateExamComponent';
+import ListExamComponent from './component/exam/ListExamComponent';
 
 
 function App() {
@@ -45,6 +47,11 @@ function App() {
             <Route path="/subjects" element={<ListSubjectComponent />} />
             <Route path="/add-subject" element={<AddOrUpdateSubjectComponent />} />
             <Route path="edit-subject/:id" element={<AddOrUpdateSubjectComponent />} />
+            
+            {/* Exam Routing */}
+            <Route path="/exams" element={<ListExamComponent />} />
+            <Route path="/add-exam" element={<AddOrUpdateExamComponent />} />
+            <Route path="edit-exam/:id" element={<AddOrUpdateExamComponent />} />
 
             {/* Student Routing */}
             <Route path="/students" element={<ListStudentComponent />} />
