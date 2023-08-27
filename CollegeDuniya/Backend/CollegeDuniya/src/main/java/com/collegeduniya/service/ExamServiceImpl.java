@@ -7,9 +7,14 @@ import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.collegeduniya.custom_exceptions.ResourceNotFoundException;
+import com.collegeduniya.dto.ApiResponse;
 import com.collegeduniya.dto.ExamDto;
 import com.collegeduniya.entities.Department;
 import com.collegeduniya.entities.Exam;
@@ -89,4 +94,19 @@ public class ExamServiceImpl implements ExamService{
 
 		
 	}
+	
+	@Override
+	public ExamDto getExamById(Long examId) {
+		// TODO Auto-generated method stub
+		//return null;
+		Exam exam = this.examRepo.findById(examId).orElseThrow(() -> new ResourceNotFoundException("Exam Id was not found"));
+		// TODO Auto-generated method stub
+		//return null;
+		ExamDto examDto = modelMapper.map(exam,ExamDto.class);
+		examDto.setDepartmentName(exam.getDepartment().getDepartmentName());
+		return examDto;
+
+	}
+	
+	
 }

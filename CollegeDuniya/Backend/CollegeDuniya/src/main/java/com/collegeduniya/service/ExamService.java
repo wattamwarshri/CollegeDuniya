@@ -13,4 +13,6 @@ public interface ExamService {
 	  String deleteExamById(Long examId);
 	  
 	  List<ExamDto> getAllExam();
+	  
+	  ExamDto getExamById(Long examId);
 }

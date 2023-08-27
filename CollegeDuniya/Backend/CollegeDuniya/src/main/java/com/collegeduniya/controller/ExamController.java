@@ -75,4 +75,18 @@ public class ExamController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
 		}
 	}
+	
+	@GetMapping("/exams/{examId}")
+	public ResponseEntity<?> getExamById(@PathVariable Long examId)
+	{
+//	    SubjectDto subjectDto = this.subjectService.getSubjectById(subjectId);
+//		return new ResponseEntity<SubjectDto>(subjectDto,HttpStatus.OK);
+		try {
+			System.out.println("in get exam by id");
+			return new ResponseEntity<>(examService.getExamById(examId),HttpStatus.OK);
+		}
+		catch(RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
 }
