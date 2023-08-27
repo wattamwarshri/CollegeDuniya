@@ -19,7 +19,6 @@ import com.collegeduniya.repository.CourseRepository;
 import com.collegeduniya.repository.ProfessorRepository;
 import com.collegeduniya.repository.StudentRepository;
 
-@CrossOrigin
 @Service
 @Transactional
 public class StudentServiceImpl implements StudentService {
