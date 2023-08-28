@@ -24,6 +24,8 @@ const SignUpComponent = () => {
     setRegisterData({ ...registerData, [name]: value });
   }
   const addData = (event) => {
+
+    
     event.preventDefault();
     if (registerData.name === "" || registerData.email === "" || registerData.username === "" || registerData.password === "" || registerData.address === "" || registerData.contact === "" || registerData.role === "") {
       // setMessage("Plase enter valid data..");
