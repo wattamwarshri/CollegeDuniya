@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ProfessorService from '../../services/ProfessorService';
-import DepartmentService from '../../services/DepartmentService';
 
 const ListProfessorComponent = () => {
 
@@ -52,7 +51,7 @@ const ListProfessorComponent = () => {
               <th>Gender</th>
               <th>Email</th>
               <th>Password</th>
-              <th>PinCode</th>
+              <th>Address</th>
               <th>Department Name</th>
               <th>Actions</th>
             </tr>
@@ -67,7 +66,7 @@ const ListProfessorComponent = () => {
                 <td>{professor.gender}</td>
                 <td>{professor.email}</td>
                 <td>{professor.password}</td>
-                <td>{professor.addressPincode}</td>
+                <td>{professor.address}</td>
                 <td>{professor.departmentName}</td>
                 <center>
                   <td>

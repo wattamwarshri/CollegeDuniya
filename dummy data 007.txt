@@ -92,16 +92,4 @@ INSERT INTO student (dob, email, address, first_name, gender, last_name, passwor
 ('2000-10-10', 'student10@example.com', 'address10', 'Lisa', 'FEMALE', 'Taylor', 'password10', 1, 1);
 
 ----------------------------------------------------------------------------------------------------------------------
-step 7(change PK from pincode to addressLine1 )
 
-INSERT INTO address (pincode, adr_line1, adr_line2, city, country, state, professor_professor_id, student_student_id) VALUES
-('12345', '123 Main St', 'Apt 1', 'Anytown', 'USA', 'CA', 1, 1),
-('67890', '456 Elm St', 'Apt 2', 'Otherville', 'USA', 'NY', 2, 2),
-('23456', '789 Oak St', 'Apt 3', 'Smalltown', 'USA', 'TX', 3, 3),
-('78901', '321 Maple St', 'Apt 4', 'Bigcity', 'USA', 'IL', 4, 4),
-('34567', '654 Pine St', 'Apt 5', 'Hometown', 'USA', 'FL', 5, 5),
-('89012', '987 Cedar St', 'Apt 6', 'Nowhere', 'USA', 'WA', 6, 6),
-('45678', '654 Birch St', 'Apt 7', 'Everytown', 'USA', 'OH', 7, 7),
-('90123', '321 Walnut St', 'Apt 8', 'Somewhere', 'USA', 'PA', 8, 8),
-('23457', '789 Spruce St', 'Apt 9', 'Anyplace', 'USA', 'AZ', 9, 9),
-('78902', '123 Cherry St', 'Apt 10', 'Noway', 'USA', 'NC', 10, 10);
