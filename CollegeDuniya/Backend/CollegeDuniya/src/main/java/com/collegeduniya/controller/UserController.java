@@ -16,15 +16,15 @@ import com.collegeduniya.dto.LoginDto;
 import com.collegeduniya.dto.UserDto;
 import com.collegeduniya.service.UserService;
 
-@CrossOrigin()
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/users")
+@RequestMapping("//api/v1/user")
 public class UserController {  
 	
 	@Autowired
 	private UserService userService;
 	//For Testing Purpose
-	@PostMapping("/register")
+	@PostMapping("/signup")
 	public ResponseEntity<?> signUp(@RequestBody UserDto userDto) {
 		try {
 			System.out.println("in add new user" + userDto);
@@ -33,6 +33,26 @@ public class UserController {
 		catch(RuntimeException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(e.getMessage()));
 		}
+	}
+	
+	 @PostMapping("/login")
+	   public ResponseEntity<?> loginPage(@RequestBody LoginDto loginDto) {
+		    try {
+			System.out.println("in login by username and password");
+			if(userService.login(loginDto.getUsername(), loginDto.getPassword())!=null) {
+				return new ResponseEntity<>(userService.login(loginDto.getUsername(), loginDto.getPassword()),HttpStatus.OK);
+				
+			}
+			else {
+			//return new ResponseEntity<>(userService.login(username,password),HttpStatus.OK);
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse("unable to find the user"));
+			}
+		}
+	 	catch(RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+		
+
 	}
 	
   
