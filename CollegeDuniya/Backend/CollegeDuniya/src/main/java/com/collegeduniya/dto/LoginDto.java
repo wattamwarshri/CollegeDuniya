@@ -1,5 +1,8 @@
 package com.collegeduniya.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +15,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginDto {
-	
+	@NotBlank
 	private String username;
-	
+	@Pattern(regexp = "^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[@#$%]).*")
 	private String password;
 	
 }
