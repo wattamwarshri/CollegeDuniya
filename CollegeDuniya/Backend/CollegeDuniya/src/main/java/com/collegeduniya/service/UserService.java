@@ -6,5 +6,5 @@ public interface UserService {
 
     String signUp(UserDto userDto);
 	
-	String login(String username, String password);
+	//String login(String username, String password);
 }
