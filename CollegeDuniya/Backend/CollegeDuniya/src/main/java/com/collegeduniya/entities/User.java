@@ -43,7 +43,7 @@ public class User {
 	@Column(length = 10,unique=true)
     private String contact;
 	
-	//@Enumerated(EnumType.STRING)
-	//private Role role;
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 }
