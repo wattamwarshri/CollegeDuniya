@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
-import TrekAPIService from '../services/CourseService';
-import './Trials/Register.css';
+import React, { useState } from 'react';
+import UserService from '../services/UserService';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+
 // import { ToastContainer, toast } from 'react-toastify';
 const SignUpComponent = () => {
 
@@ -14,9 +16,8 @@ const SignUpComponent = () => {
   //   });
   // };
 
-  let [registerData, setRegisterData] = 
-  useState({ name: "", email: "", username: "", password: "", address: "", contact: "", role: "" });
-
+  const [registerData, setRegisterData] =  useState({ name: "", email: "", username: "", password: "", address: "", contact: "" });
+  const navigate = useNavigate();
   // const [message, setMessage] = useState("");
 
   const changeHandle = (event) => {
@@ -24,18 +25,18 @@ const SignUpComponent = () => {
     setRegisterData({ ...registerData, [name]: value });
   }
   const addData = (event) => {
-
-    
     event.preventDefault();
-    if (registerData.name === "" || registerData.email === "" || registerData.username === "" || registerData.password === "" || registerData.address === "" || registerData.contact === "" || registerData.role === "") {
+
+    if (registerData.name === "" || registerData.email === "" || registerData.username === "" || registerData.password === "" || registerData.address === "" || registerData.contact === "") {
       // setMessage("Plase enter valid data..");
     //   toast.error("Plase enter valid data..");//{ position: toast.POSITION.CENTER_LEFT });
       return;
     }
-    let registerData1 = { name: registerData.name, email: registerData.email, username: registerData.username, password: registerData.password, address: registerData.address, contact: registerData.contact, role: registerData.role }
-    TrekAPIService.addUser(registerData1)
+    let registerData1 = { name: registerData.name, email: registerData.email, username: registerData.username, password: registerData.password, address: registerData.address, contact: registerData.contact }
+    UserService.SignUp(registerData1)
       .then((result) => {
         console.log(result);
+        navigate("/home-page");
         // setMessage("Registration successfull..");
         // toast.success("Registration successfull..");
       })
@@ -43,9 +44,10 @@ const SignUpComponent = () => {
         console.log(error);
         // setMessage("Error 400/500..");
         // toast.error("Error 400/500..");
+        
       });
 
-    setRegisterData({ name: "", email: "", username: "", password: "", address: "", contact: "", role: "" });
+    setRegisterData({ name: "", email: "", username: "", password: "", address: "", contact: ""});
   }
 
 
@@ -86,10 +88,6 @@ const SignUpComponent = () => {
             <input type="text" className="form-control" id="contact" placeholder="Enter Contact No" name="contact" value={registerData.contact} onChange={changeHandle} />
           </div>
 
-          <div className="mb-2 mt-2">
-            <label for="role" className="form-label font-weight-bold text-left">Role</label>
-            <input type="text" className="form-control" id="role" placeholder="Enter Role" name="role" value={registerData.role} onChange={changeHandle} />
-          </div>
         <center>
           <button type="button" className="btn btn-primary bg-danger p-2 px-5" onClick={addData}>Register</button></center>
         </form>
