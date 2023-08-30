@@ -1,6 +1,7 @@
 package com.collegeduniya.service;
 
 import org.modelmapper.ModelMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.BeanDefinitionDsl.Role;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		//return null;
 		 // String encodedPassword = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt(12));
+		userDto.setRole(userDto.getRole().toUpperCase());
           User user = this.modelMapper.map(userDto,User.class);
 		
 	    //sub.setProfessor(prof);
