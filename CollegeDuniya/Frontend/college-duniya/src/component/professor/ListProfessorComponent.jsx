@@ -51,7 +51,6 @@ const ListProfessorComponent = () => {
               <th>Gender</th>
               <th>Email</th>
               <th>Password</th>
-              <th>Address</th>
               <th>Department Name</th>
               <th>Actions</th>
             </tr>
@@ -66,7 +65,6 @@ const ListProfessorComponent = () => {
                 <td>{professor.gender}</td>
                 <td>{professor.email}</td>
                 <td>{professor.password}</td>
-                <td>{professor.address}</td>
                 <td>{professor.departmentName}</td>
                 <center>
                   <td>

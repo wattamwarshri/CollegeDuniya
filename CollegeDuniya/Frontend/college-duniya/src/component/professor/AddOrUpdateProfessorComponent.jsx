@@ -26,7 +26,6 @@ const AddOrUpdateProfessor = () => {
         setGender(response.data.gender);
         setEmail(response.data.email);
         setPassword(response.data.password);
-        setAddressPincode(response.data.addressPincode)
         setDepartmentName(response.data.departmentName);
        }).catch(error => {console.log(error);})
     }, [])
@@ -36,7 +35,7 @@ const AddOrUpdateProfessor = () => {
     const saveOrUpdateProfessor = (e) =>
     {
       e.preventDefault();
-      const professor = {professor_id,firstName,lastName,gender,email,password,addressPincode,departmentName}
+      const professor = {professor_id,firstName,lastName,gender,email,password,departmentName}
       console.log(professor);
   
     if(id)
@@ -127,17 +126,8 @@ const AddOrUpdateProfessor = () => {
                     <label className="form-label" for="password">
                     Password
                     </label>
-                    <input type="text" id="password" className="form-control" value={password}
+                    <input type="password" id="password" className="form-control" value={password}
                         onChange={(e) => setPassword(e.target.value)} />
-                </div>
-
-                 {/* <!-- AddressPincode input --> */}
-                 <div className="form-outline mb-4">
-                    <label className="form-label" for="addressPincode">
-                    Address Pincode
-                    </label>
-                    <input type="text" id="addressPincode" className="form-control" value={addressPincode}
-                        onChange={(e) => setAddressPincode(e.target.value)} />
                 </div>
 
                 {/* <!-- DepartmentName input --> */}

@@ -108,7 +108,7 @@ const AddOrUpdateStudentComponent = () => {
                     <label className="form-label" for="dob">
                         Date Of Birth
                     </label>
-                    <input type="text" id="dob" className="form-control" value={dob}
+                    <input type="date" id="dob" className="form-control" value={dob}
                         onChange={(e) => setDob(e.target.value)} />
                 </div>
 

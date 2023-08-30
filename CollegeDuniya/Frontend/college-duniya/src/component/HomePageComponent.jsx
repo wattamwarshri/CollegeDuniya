@@ -1,4 +1,13 @@
 import React from 'react'
+import professorImg from '../img/professor.jpg'
+import studentImg from '../img/student.jpg';
+import departmentImg from '../img/Department.jpg';
+import subjectImg from '../img/subject.jpg';
+import examImg from '../img/Exam1.jpg';
+import courseImg from '../img/courses.jpg'
+
+
+
 const student = {id : 1,name : "Shri"}
 
 const HomePageComponent = () => {
@@ -12,7 +21,7 @@ const HomePageComponent = () => {
             <div className='d-flex'>
                 <div className="card ">
                     <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" className="img-fluid" />
+                        <img src={studentImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}} />
                         <a href="#!">
                             <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                         </a>
@@ -25,7 +34,7 @@ const HomePageComponent = () => {
                 </div>
                 <div className="card">
                     <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" className="img-fluid" />
+                        <img src={departmentImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}} />
                         <a href="#!">
                             <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                         </a>
@@ -39,7 +48,7 @@ const HomePageComponent = () => {
 
                 <div className="card">
                     <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" className="img-fluid" />
+                        <img src={courseImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}} />
                         <a href="#!">
                             <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                         </a>
@@ -51,10 +60,11 @@ const HomePageComponent = () => {
                     </div>
                 </div>
                 </div>
+                {/* https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp */}
                 <div className='d-flex'>
                 <div className="card">
                     <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" className="img-fluid" />
+                        <img src={professorImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}}/>
                         <a href="#!">
                             <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                         </a>
@@ -68,7 +78,7 @@ const HomePageComponent = () => {
 
                 <div className="card">
                     <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" className="img-fluid" />
+                        <img src={subjectImg} className="img-fluid"  style={{"height" : 250 + "px", "width": 500 + "px"}}/>
                         <a href="#!">
                             <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                         </a>
@@ -82,7 +92,7 @@ const HomePageComponent = () => {
 
                 <div className="card">
                     <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" className="img-fluid" />
+                        <img src={examImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}} />
                         <a href="#!">
                             <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                         </a>

@@ -15,6 +15,8 @@ import ListSubjectComponent from './component/subject/ListSubjectComponent';
 import AddOrUpdateSubjectComponent from './component/subject/AddOrUpdateSubjectComponent';
 import AddOrUpdateExamComponent from './component/exam/AddOrUpdateExamComponent';
 import ListExamComponent from './component/exam/ListExamComponent';
+import SignUpComponent from './component/SignUpComponent';
+import HomePageComponent from './component/HomePageComponent';
 
 
 function App() {
@@ -58,7 +60,10 @@ function App() {
             <Route path="/add-student" element={<AddOrUpdateStudentComponent/>} />
             <Route path="edit-student/:id" element={<AddOrUpdateStudentComponent/>} />
             
-             
+             {/* Trial Components */}
+          <Route path="/sign-up" element={<SignUpComponent />} />
+          <Route path ="/home-page" element={<HomePageComponent/>} />
+
           </Routes>
         </div>
         <FooterComponent />
