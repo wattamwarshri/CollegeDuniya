@@ -2,8 +2,6 @@ package com.collegeduniya.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,11 +26,14 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
 	
-	@Column(length = 20,unique = true)
+	@Column(length = 20)
     private String name;
 	
 	@Column(length = 20,unique = true)
 	private String username;
+	
+	@Column(length = 30)
+	private String email;
 	
 	@Column(length = 20,unique=true)
 	private String password;
@@ -42,8 +43,5 @@ public class User {
 	
 	@Column(length = 10,unique=true)
     private String contact;
-	
-	@Enumerated(EnumType.STRING)
-	private Role role;
 	
 }

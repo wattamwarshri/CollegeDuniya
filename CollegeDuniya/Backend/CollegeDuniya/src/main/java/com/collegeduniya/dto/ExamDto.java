@@ -14,12 +14,14 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExamDto {
-
-private Long examId;
+	
+	private Long examId;
 	
 	private LocalDate examDate;
 	
 	private String examName;
+	
+	private String email;
 	
 	private String examVenue;
 	

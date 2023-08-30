@@ -12,16 +12,14 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
-
-    private Long userId;
 	
 	private String name;
 	
 	private String username;
 	
-	private String password;
+	private String email;
 	
-	private String role;
+	private String password;
 	
 	private String address;
 	
