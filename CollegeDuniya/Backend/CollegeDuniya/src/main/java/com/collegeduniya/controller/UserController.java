@@ -36,7 +36,7 @@ public class UserController {
 	}
 	
 	 @PostMapping("/login")
-	   public ResponseEntity<?> loginPage(@RequestBody LoginDto loginDto) {
+	   public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
 		    try {
 			System.out.println("in login by username and password");
 			if(userService.login(loginDto.getUsername(), loginDto.getPassword())!=null) {
