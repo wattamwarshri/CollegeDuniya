@@ -25,7 +25,7 @@ public class UserController {
 	private UserService userService;
 	//For Testing Purpose
 	@PostMapping("/register")
-	public ResponseEntity<?> register(@RequestBody UserDto userDto) {
+	public ResponseEntity<?> signUp(@RequestBody UserDto userDto) {
 		try {
 			System.out.println("in add new user" + userDto);
 			return new ResponseEntity<>(new ApiResponse(userService.signUp(userDto)),HttpStatus.CREATED);
