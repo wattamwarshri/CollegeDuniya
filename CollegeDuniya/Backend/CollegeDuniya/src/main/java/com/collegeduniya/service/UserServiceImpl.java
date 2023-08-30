@@ -31,15 +31,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String login(String username,String password) {
 
-		User dbuser = userRepo.findByUsername(username).orElseThrow(() -> new ResourceNotFoundException("user was not found"));
-		if(password.equals(dbuser.getPassword()))
-		{
-			UserDto userDto = modelMapper.map(dbuser,UserDto.class);
-			return userDto.getUsername()+" loggoed in successfully";
-		}
-		else
-		{
-			return "Invalid credential";
-		}
+		User dbuser = userRepo.findByUsernameAndPassword(username,password).orElseThrow(() -> new ResourceNotFoundException("invalid username or password"));
+		UserDto userDto = modelMapper.map(dbuser,UserDto.class);
+		return userDto.getUsername()+" loggoed in successfully";
 	}
 }
