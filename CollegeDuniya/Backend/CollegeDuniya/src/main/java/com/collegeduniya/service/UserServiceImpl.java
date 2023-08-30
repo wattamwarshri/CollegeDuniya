@@ -42,6 +42,36 @@ public class UserServiceImpl implements UserService {
 		return "User can not be added because of incorrect role";
         }
 	}
+	
+	
+	@Override
+	public String login(String username,String password) {
+		// TODO Auto-generated method stub
+		//return null;
+		User dbuser = userRepo.findByUsername(username).orElseThrow(() -> new ResourceNotFoundException("user was not found"));
+		//Boolean isPasswordMatch = BCrypt.checkpw(password, dbuser.getPassword());
+//		System.out.println("Checking"+password);
+//		System.out.println("Checking"+dbuser.getPassword());
+//		if(password.equals(dbuser.getPassword()))
+//		{
+//			System.out.println("We are doing right");
+//			
+//		}
+//		else {
+//			System.out.println("We are not doing the well");
+//		}
+		if(password.equals(dbuser.getPassword()))
+		{
+			UserDto userDto = modelMapper.map(dbuser,UserDto.class);
+			return userDto.getRole();
+		}
+		else
+		{
+			//return modelMapper.map(isPasswordMatch, null)
+			return null;
+		}
+	}
+
 
 	
 }
