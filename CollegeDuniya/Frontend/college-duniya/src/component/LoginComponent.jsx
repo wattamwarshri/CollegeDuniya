@@ -18,7 +18,6 @@ const LoginComponent = () => {
       .catch((error) => {
         console.log("Error: " + error);
         setFlag(true);
-        navigate('/sign-up')
       });
   };
 

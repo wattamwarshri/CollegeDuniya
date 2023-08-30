@@ -8,7 +8,7 @@ import courseImg from '../img/courses.jpg'
 
 
 
-const student = {id : 1,name : "Shri"}
+const student = { id: 1, name: "Shri" }
 
 const HomePageComponent = () => {
 
@@ -19,9 +19,59 @@ const HomePageComponent = () => {
             </div>
 
             <div className='d-flex'>
+                <div className="card">
+                    <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img src={departmentImg} className="img-fluid" style={{ "height": 250 + "px", "width": 500 + "px" }} />
+                        <a href="#!">
+                            <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
+                        </a>
+                    </div>
+                    <div className="card-body">
+                        <center> <h5 className="card-title">Department Info</h5> </center>
+                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <center><a href="/departments" className="btn btn-primary">View</a> </center>
+                    </div>
+                </div>
+
+
+                <div className="card">
+                    <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img src={courseImg} className="img-fluid" style={{ "height": 250 + "px", "width": 500 + "px" }} />
+                        <a href="#!">
+                            <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
+                        </a>
+                    </div>
+                    <div className="card-body">
+                        <center> <h5 className="card-title">Courses Info</h5> </center>
+                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <center><a href="/courses" className="btn btn-primary">View</a> </center>
+                    </div>
+                </div>
+
+                <div className="card">
+                    <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img src={professorImg} className="img-fluid" style={{ "height": 250 + "px", "width": 500 + "px" }} />
+                        <a href="#!">
+                            <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
+                        </a>
+                    </div>
+                    <div className="card-body">
+                        <center> <h5 className="card-title">Professors Info</h5> </center>
+                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <center><a href="/professors" className="btn btn-primary">View</a> </center>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div className='d-flex'>
+
                 <div className="card ">
                     <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src={studentImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}} />
+                        <img src={studentImg} className="img-fluid" style={{ "height": 250 + "px", "width": 500 + "px" }} />
                         <a href="#!">
                             <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                         </a>
@@ -34,51 +84,7 @@ const HomePageComponent = () => {
                 </div>
                 <div className="card">
                     <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src={departmentImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}} />
-                        <a href="#!">
-                            <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
-                        </a>
-                    </div>
-                    <div className="card-body">
-                        <center> <h5 className="card-title">Department Info</h5> </center>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <center><a href="/departments" className="btn btn-primary">View</a> </center>
-                    </div>
-                </div>
-
-                <div className="card">
-                    <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src={courseImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}} />
-                        <a href="#!">
-                            <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
-                        </a>
-                    </div>
-                    <div className="card-body">
-                        <center> <h5 className="card-title">Courses Info</h5> </center>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <center><a href="/courses" className="btn btn-primary">View</a> </center>
-                    </div>
-                </div>
-                </div>
-                {/* https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp */}
-                <div className='d-flex'>
-                <div className="card">
-                    <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src={professorImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}}/>
-                        <a href="#!">
-                            <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
-                        </a>
-                    </div>
-                    <div className="card-body">
-                        <center> <h5 className="card-title">Professors Info</h5> </center>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <center><a href="/professors" className="btn btn-primary">View</a> </center>
-                    </div>
-                </div>
-
-                <div className="card">
-                    <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src={subjectImg} className="img-fluid"  style={{"height" : 250 + "px", "width": 500 + "px"}}/>
+                        <img src={subjectImg} className="img-fluid" style={{ "height": 250 + "px", "width": 500 + "px" }} />
                         <a href="#!">
                             <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                         </a>
@@ -92,7 +98,7 @@ const HomePageComponent = () => {
 
                 <div className="card">
                     <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src={examImg} className="img-fluid" style={{"height" : 250 + "px", "width": 500 + "px"}} />
+                        <img src={examImg} className="img-fluid" style={{ "height": 250 + "px", "width": 500 + "px" }} />
                         <a href="#!">
                             <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                         </a>
@@ -104,12 +110,12 @@ const HomePageComponent = () => {
                     </div>
                 </div>
 
-                </div>
+            </div>
 
-            
+
         </div>
-            
-        
+
+
     )
 }
 
