@@ -58,7 +58,7 @@ const LoginComponent = () => {
                         onChange={(e) => setUserName(e.target.value)}
                       />
                       <label className="form-label" for="typeEmailX">
-                        Email
+                        User Name
                       </label>
                     </div>
 

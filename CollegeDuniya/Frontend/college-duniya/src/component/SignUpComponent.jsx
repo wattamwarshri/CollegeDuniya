@@ -36,7 +36,7 @@ const SignUpComponent = () => {
     UserService.SignUp(registerData1)
       .then((result) => {
         console.log(result);
-        navigate("/home-page");
+        navigate("/");
         // setMessage("Registration successfull..");
         // toast.success("Registration successfull..");
       })
