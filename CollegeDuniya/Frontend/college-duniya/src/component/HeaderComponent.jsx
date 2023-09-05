@@ -1,5 +1,6 @@
 import React from 'react'
 import collegeLogo from '../img/fav-icon-college.jpg'
+import { Link } from 'react-router-dom'
 const HeaderComponent = () => {
   return (
     <div>
@@ -12,6 +13,7 @@ const HeaderComponent = () => {
                            
                             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div className="navbar-nav">
+                                <Link to="/" className="btn btn-danger btn-block flex">Logout</Link>
                                    
                                     
                                 </div>
