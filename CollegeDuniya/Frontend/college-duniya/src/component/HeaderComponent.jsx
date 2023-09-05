@@ -13,7 +13,7 @@ const HeaderComponent = () => {
                            
                             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div className="navbar-nav">
-                                <Link to="/" className="btn btn-danger btn-block flex">Logout</Link>
+                                <Link to="/" className="btn btn-danger btn-block flex-reverese" >Logout</Link>
                                    
                                     
                                 </div>
