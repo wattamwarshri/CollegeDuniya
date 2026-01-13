@@ -1,0 +1,12 @@
+[Unit]
+Description=Project CollegeDuniya
+
+[Service]
+EnvironmentFile=/etc/sysconfig/collegeduniya.env
+User=collegeduniya
+Group=collegeduniya
+WorkingDirectory=/opt/collegeduniya
+ExecStart=/usr/lib/jvm/temurin-17-jdk-amd64/bin/java ${XMS} ${XMX} -jar -Dspring.config.location=file:/opt/dmart/conf/application.properties -Dlogging.config=/opt/dmart/conf/logback.xml collegeduniya-1.0.0.jar
+
+[Install]
+WantedBy=multi-user.target
