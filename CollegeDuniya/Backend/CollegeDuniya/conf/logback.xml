@@ -1,0 +1,32 @@
+<configuration scan="true" scanPeriod="60 Seconds">
+
+    <property name="LOG_DIR" value="/var/log/collegeduniya" />
+    <property name="LOG_FILE_NAME" value="collegeduniya.log" />
+    <!--    <property name="LOG_LEVEL" value="ERROR" />-->
+    <property name="LOG_LEVEL" value="INFO" />
+
+    <appender name="CollegeDuniyaAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/${LOG_FILE_NAME}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/${LOG_FILE_NAME}.%d{yyyy-MM-dd}.zip</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5p %c{0}:%L - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--    logger for specific package only-->
+    <!--    additivity-> send logs to parent-->
+    <!--    <logger name="com.supermart.dmart" level="${CLOTHES_LOG_LEVEL}" additivity="false">-->
+    <!--        <appender-ref ref="ClothesAppender"/>-->
+    <!--    </logger>-->
+
+    <!--    logger for all logs in application except specified above-->
+
+    <!--    This is parent logger-->
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="CollegeDuniyaAppender" />
+    </root>
+
+</configuration>
