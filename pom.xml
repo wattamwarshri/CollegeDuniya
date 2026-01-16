@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.15</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.collegeduniya</groupId>
+	<artifactId>collegeduniya</artifactId>
+	<version>1.0.0</version>
+	<name>CollegeDuniya</name>
+	<description>College Management project for Spring Boot</description>
+	<properties>
+		<java.version>11</java.version>
+		<env.file.target.path>/etc/sysconfig</env.file.target.path>
+		<service.file.target.path>/etc/systemd/system</service.file.target.path>
+		<collegeduniya.install.target>/opt/collegeduniya</collegeduniya.install.target>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Swagger UI -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<!-- Password Encryption -->
+		<dependency>
+             <groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
+        </dependency>
+
+<!--	logger dependency-->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+<!--deb creation plugin to install on the ubuntu[Debian]-->
+			<plugin>
+				<groupId>net.sourceforge.javadpkg</groupId>
+				<artifactId>dpkg-maven-plugin</artifactId>
+				<version>1.0.5</version>
+				<executions>
+					<execution>
+						<id>generate-dpkg</id>
+						<goals>
+							<goal>dpkg</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<control>
+						<name>collegeduniya</name>
+						<version>${project.version}</version>
+						<architecture>all</architecture>
+						<section>java</section>
+						<priority>optional</priority>
+						<maintainer>IT &lt;it@collegeduniya.com &gt; </maintainer>
+						<homepage>https://www.collegeduniya.com</homepage>
+						<description>CollegeDuniya</description>
+					</control>
+					<scripts>
+						<script>
+							<!-- This script executes before uninstalling of this deb-->
+							<type>PREINST</type>
+							<content>
+								getent group collegeduniya || groupadd -r collegeduniya
+								getent passwd collegeduniya || useradd -g collegeduniya -s /sbin/nologin -r -M collegeduniya
+							</content>
+						</script>
+						<script>
+							<!-- This script executes before uninstalling of this deb-->
+							<type>PRERM</type>
+							<content>
+								sudo systemctl stop collegeduniya.service
+								rm -rf /opt/collegeduniya
+								rm -rf /var/log/collegeduniya
+								sudo rm -rf /etc/systemd/system/collegeduniya.service
+								sudo rm -rf /etc/sysconfig/collegeduniya.env
+
+							</content>
+						</script>
+						<script>
+							<!-- This script executes after installation of this deb-->
+							<type>POSTINST</type>
+							<content>
+								sudo systemctl daemon-reload
+								sudo systemctl start collegeduniya.service
+							</content>
+						</script>
+					</scripts>
+
+					<copyright>
+					</copyright>
+					<changeLog>
+					</changeLog>
+					<data>
+						<entries>
+							<entry>
+								<targetPath>${collegeduniya.install.target}</targetPath>
+								<groupName>collegeduniya</groupName>
+								<userName>collegeduniya</userName>
+							</entry>
+
+							<entry>
+								<targetPath>/var/log/collegeduniya</targetPath>
+								<groupName>collegeduniya</groupName>
+								<userName>collegeduniya</userName>
+							</entry>
+
+							<entry>
+								<targetPath>${collegeduniya.install.target}/conf</targetPath>
+								<groupName>collegeduniya</groupName>
+								<userName>collegeduniya</userName>
+							</entry>
+
+							<entry>
+								<targetPath>${collegeduniya.install.target}/conf/</targetPath>
+								<sourcePath>${project.basedir}/conf/logback.xml</sourcePath>
+								<!-- <recursive>true</recursive>-->
+								<groupName>collegeduniya</groupName>
+								<userName>collegeduniya</userName>
+							</entry>
+							<entry>
+								<targetPath>${collegeduniya.install.target}/</targetPath>
+								<sourcePath>${project.basedir}/target/collegeduniya-${project.version}.jar</sourcePath>
+								<groupName>collegeduniya</groupName>
+								<userName>collegeduniya</userName>
+							</entry>
+							<entry>
+								<targetPath>${collegeduniya.install.target}/conf/</targetPath>
+								<sourcePath>${project.basedir}/conf/application.properties</sourcePath>
+								<groupName>collegeduniya</groupName>
+								<userName>collegeduniya</userName>
+							</entry>
+							<entry>
+								<targetPath>${service.file.target.path}/</targetPath>
+								<sourcePath>${project.basedir}/conf/collegeduniya.service</sourcePath>
+							</entry>
+							<entry>
+								<targetPath>${env.file.target.path}/</targetPath>
+								<sourcePath>${project.basedir}/conf/collegeduniya.env</sourcePath>
+							</entry>
+						</entries>
+					</data>
+				</configuration>
+			</plugin>
+<!--rpm creation plugin to install on the centos[RHEL]-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>rpm-maven-plugin</artifactId>
+				<version>2.3.0</version>
+				<executions>
+					<execution>
+						<id>generate-rpm</id>
+						<goals>
+							<goal>rpm</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<license>Copyright CollegeDuniya 2026</license>
+					<group>Application/System</group>
+					<name>collegeduniya</name>
+					<defineStatements>
+						<defineStatement>_source_payload w0.gzdio</defineStatement>
+						<defineStatement>_binary_payload w0.gzdio</defineStatement>
+					</defineStatements>
+					<mappings>
+
+						<mapping>
+							<directory>${collegeduniya.install.target}</directory>
+							<username>collegeduniya</username>
+							<groupname>collegeduniya</groupname>
+							<filemode>770</filemode>
+						</mapping>
+
+						<mapping>
+							<directory>/var/log/collegeduniya</directory>
+							<username>collegeduniya</username>
+							<groupname>collegeduniya</groupname>
+							<filemode>770</filemode>
+						</mapping>
+
+						<mapping>
+							<directory>${collegeduniya.install.target}/conf</directory>
+							<username>collegeduniya</username>
+							<groupname>collegeduniya</groupname>
+							<filemode>770</filemode>
+						</mapping>
+
+						<mapping>
+							<directory>${collegeduniya.install.target}/conf/</directory>
+							<configuration>noreplace</configuration>
+							<username>collegeduniya</username>
+							<groupname>collegeduniya</groupname>
+							<filemode>775</filemode>
+							<sources>
+								<source>
+									<location>${project.basedir}/conf/logback.xml</location>
+								</source>
+								<source>
+									<location>${project.basedir}/conf/application.properties</location>
+								</source>
+							</sources>
+						</mapping>
+
+						<mapping>
+							<directory>${collegeduniya.install.target}</directory>
+							<username>collegeduniya</username>
+							<groupname>collegeduniya</groupname>
+							<sources>
+								<source>
+									<location>${project.basedir}/target/collegeduniya-${project.version}.jar</location>
+								</source>
+							</sources>
+						</mapping>
+
+						<mapping>
+							<directory>${env.file.target.path}</directory>
+							<directoryIncluded>false</directoryIncluded>
+							<filemode>644</filemode>
+							<sources>
+								<source>
+									<location>${project.basedir}/conf/collegeduniya.env</location>
+								</source>
+							</sources>
+						</mapping>
+
+						<mapping>
+							<directory>${service.file.target.path}</directory>
+							<directoryIncluded>false</directoryIncluded>
+							<filemode>644</filemode>
+							<sources>
+								<source>
+									<location>${project.basedir}/conf/collegeduniya.service</location>
+								</source>
+							</sources>
+						</mapping>
+
+						<!--Add below code for truststore-->
+
+						<!--                        <mapping>-->
+						<!--                            <directory>${truststore.path}</directory>-->
+						<!--                            <username>collegeduniya</username>-->
+						<!--                            <groupname>collegeduniya</groupname>-->
+						<!--                            <filemode>770</filemode>-->
+						<!--                        </mapping>-->
+
+					</mappings>
+					<preinstallScriptlet>
+						<script>
+							echo "Installing CollegeDuniya Service"
+							systemctl stop collegeduniya.service
+							systemctl disable collegeduniya.service
+
+							getent group collegeduniya || groupadd -r collegeduniya
+							getent passwd collegeduniya || useradd -g collegeduniya -s /sbin/nologin -r -d /home/collegeduniya collegeduniya
+						</script>
+					</preinstallScriptlet>
+
+					<postinstallScriptlet>
+						<script>
+							echo "Installation of collegeduniya service completed"
+							systemctl enable collegeduniya.service
+							mkdir -p /var/run/collegeduniya
+							chmod 777 /var/run/collegeduniya
+							systemctl start collegeduniya.service
+						</script>
+					</postinstallScriptlet>
+
+					<postremoveScriptlet>
+						<script>
+							echo "Uninstallation of collegeduniya service started"
+							systemctl stop collegeduniya.service
+							systemctl disable collegeduniya.service
+							rm -rf /var/run/collegeduniya
+							rm -rf /opt/collegeduniya
+							rm -rf /etc/sysconfig/collegeduniya.env
+							rm -rf /etc/systemd/system/collegeduniya.service
+							echo "Uninstallation of collegeduniya is completed"
+							userdel -r collegeduniya
+							groupdel collegeduniya
+						</script>
+					</postremoveScriptlet>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
