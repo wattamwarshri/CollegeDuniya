@@ -344,6 +344,43 @@
 					</postremoveScriptlet>
 				</configuration>
 			</plugin>
+<!--	plugin to integrate react frontend code to backend springboot code-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<id>npmInstall</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<workingDirectory>src/main/client/</workingDirectory>
+							<arguments>
+								<argument>install</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>validate</phase>
+						<id>buildDev</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<workingDirectory>src/main/client/</workingDirectory>
+							<arguments>
+								<argument>run</argument>
+								<argument>build</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
