@@ -1,5 +1,7 @@
 package com.collegeduniya.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,18 +16,20 @@ import com.collegeduniya.dto.LoginDto;
 import com.collegeduniya.dto.UserDto;
 import com.collegeduniya.service.UserService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/user")
-public class UserController {  
-	
+public class UserController {
+
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
 	@Autowired
 	private UserService userService;
 	
 	@PostMapping("/signup")
 	public ResponseEntity<?> signUp(@RequestBody UserDto userDto) {
 		try {
-			System.out.println("in add new user" + userDto);
+			logger.info("In add new user: {}", userDto);
 			return new ResponseEntity<>(new ApiResponse(userService.signUp(userDto)),HttpStatus.CREATED);
 		}
 		catch(RuntimeException e) {
@@ -36,7 +40,7 @@ public class UserController {
 	 @PostMapping("/login")
 	   public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
 		    try {
-			System.out.println("in login by username and password");
+			logger.info("In login by username and password");
 			if(userService.login(loginDto.getUsername(), loginDto.getPassword())!=null) {
 				return new ResponseEntity<>(userService.login(loginDto.getUsername(), loginDto.getPassword()),HttpStatus.OK);
 				
@@ -52,6 +56,6 @@ public class UserController {
 		
 
 	}
-	
-  
+
+
 }

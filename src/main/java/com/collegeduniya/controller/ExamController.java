@@ -2,10 +2,11 @@ package com.collegeduniya.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +20,11 @@ import com.collegeduniya.dto.ApiResponse;
 import com.collegeduniya.dto.ExamDto;
 import com.collegeduniya.service.ExamService;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/exams")
 public class ExamController {
+
+	private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
 
 	@Autowired
 	private ExamService examService; 	
@@ -33,7 +35,7 @@ public class ExamController {
 //		SubjectDto createdSubjectDto =  this.subjectService.addSubject(subjectDto, professorId);
 //		return  new ResponseEntity<SubjectDto>(createdSubjectDto,HttpStatus.CREATED);
 		try {
-			System.out.println("in add new exam" + examDto);
+			logger.info("In add new exam: {}", examDto);
 			return new ResponseEntity<>(new ApiResponse(examService.addExam(examDto)),HttpStatus.CREATED);
 		}
 		catch(RuntimeException e) {
@@ -46,7 +48,7 @@ public class ExamController {
 	{
 //		SubjectDto updateSubject = this.subjectService.updateSubject(subjectDto,subjectId);
 //		return new ResponseEntity<SubjectDto>(updateSubject, HttpStatus.OK);
-		
+		logger.info("In update Exam with id: {}", examId);
 		return examService.updateExamDetails(examDto, examId);
 	}
 	
@@ -56,7 +58,7 @@ public class ExamController {
 //		this.subjectService.deleteSubject(subjectId);
 //	    return new ApiResponse("Subject is successfully deleted");
 		try {
-			System.out.println("in delete Subject by id");
+			logger.info("In delete Subject by id");
 			return new ResponseEntity<>(examService.deleteExamById(examId),HttpStatus.OK);
 		}
 		catch(RuntimeException e) {
@@ -70,7 +72,7 @@ public class ExamController {
 //		List<SubjectDto> allSubject = this.subjectService.getAllSubject();
 //		return new ResponseEntity<List<SubjectDto>>(allSubject,HttpStatus.OK);
 		try {
-			System.out.println("in get all available exams ");
+			logger.info("in get all available exams ");
 			return new ResponseEntity<>(examService.getAllExam(),HttpStatus.OK);
 		}
 		catch(RuntimeException e) {
@@ -84,7 +86,7 @@ public class ExamController {
 //	    SubjectDto subjectDto = this.subjectService.getSubjectById(subjectId);
 //		return new ResponseEntity<SubjectDto>(subjectDto,HttpStatus.OK);
 		try {
-			System.out.println("in get exam by id");
+			logger.info("in get exam by id");
 			return new ResponseEntity<>(examService.getExamById(examId),HttpStatus.OK);
 		}
 		catch(RuntimeException e) {

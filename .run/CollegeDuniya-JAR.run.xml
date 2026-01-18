@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="CollgeDuniya-JAR" type="JarApplication">
+  <configuration default="false" name="CollegeDuniya-JAR" type="JarApplication">
     <option name="JAR_PATH" value="$PROJECT_DIR$/target/collegeduniya-1.0.0.jar" />
     <option name="VM_PARAMETERS" value="-Dlogging.config=conf/logback.xml" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />

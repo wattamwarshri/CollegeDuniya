@@ -3,7 +3,6 @@ package com.collegeduniya;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
@@ -26,7 +25,7 @@ public class WebConfig implements WebMvcConfigurer {
 
                         return (requestedResource.exists() && requestedResource.isReadable())
                                 ? requestedResource
-                                : new ClassPathResource("/static/index.html");
+                                : new ClassPathResource("static/index.html");
                     }
                 });
     }

@@ -2,10 +2,11 @@ package com.collegeduniya.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +20,11 @@ import com.collegeduniya.dto.ApiResponse;
 import com.collegeduniya.dto.SubjectDto;
 import com.collegeduniya.service.SubjectService;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/subjects")
 public class SubjectController {
+
+	private static final Logger logger = LoggerFactory.getLogger(SubjectController.class);
 
 	@Autowired
 	private SubjectService subjectService; 	
@@ -33,7 +35,7 @@ public class SubjectController {
 //		SubjectDto createdSubjectDto =  this.subjectService.addSubject(subjectDto, professorId);
 //		return  new ResponseEntity<SubjectDto>(createdSubjectDto,HttpStatus.CREATED);
 		try {
-			System.out.println("in add new subject" + subjectDto);
+			logger.info("In add new subject: {}", subjectDto);
 			return new ResponseEntity<>(new ApiResponse(subjectService.addSubject(subjectDto)),HttpStatus.CREATED);
 		}
 		catch(RuntimeException e) {
@@ -56,7 +58,7 @@ public class SubjectController {
 //		this.subjectService.deleteSubject(subjectId);
 //	    return new ApiResponse("Subject is successfully deleted");
 		try {
-			System.out.println("in delete Subject by id");
+			logger.info("In delete Subject by id");
 			return new ResponseEntity<>(subjectService.deleteSubjectById(subjectId),HttpStatus.OK);
 		}
 		catch(RuntimeException e) {
@@ -70,7 +72,7 @@ public class SubjectController {
 //		List<SubjectDto> allSubject = this.subjectService.getAllSubject();
 //		return new ResponseEntity<List<SubjectDto>>(allSubject,HttpStatus.OK);
 		try {
-			System.out.println("in get all available subjects ");
+			logger.info("In get all available subjects ");
 			return new ResponseEntity<>(subjectService.getAllSubject(),HttpStatus.OK);
 		}
 		catch(RuntimeException e) {
@@ -84,7 +86,7 @@ public class SubjectController {
 //	    SubjectDto subjectDto = this.subjectService.getSubjectById(subjectId);
 //		return new ResponseEntity<SubjectDto>(subjectDto,HttpStatus.OK);
 		try {
-			System.out.println("in get subject by id");
+			logger.info("In get subject by id");
 			return new ResponseEntity<>(subjectService.getSubjectById(subjectId),HttpStatus.OK);
 		}
 		catch(RuntimeException e) {
