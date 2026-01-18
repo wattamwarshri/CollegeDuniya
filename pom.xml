@@ -334,7 +334,7 @@
 							systemctl stop collegeduniya.service
 							systemctl disable collegeduniya.service
 							rm -rf /var/run/collegeduniya
-							rm -rf /opt/collegeduniya
+<!--							rm -rf /opt/collegeduniya-->
 							rm -rf /etc/sysconfig/collegeduniya.env
 							rm -rf /etc/systemd/system/collegeduniya.service
 							echo "Uninstallation of collegeduniya is completed"

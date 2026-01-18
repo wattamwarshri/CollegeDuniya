@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SUBJECT_API_BASE_URL="http://localhost:8080/api/v1/subjects";
+const SUBJECT_API_BASE_URL="/api/v1/subjects";
 
 class SubjectService
 {
